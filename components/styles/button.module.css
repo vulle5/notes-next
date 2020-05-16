@@ -1,0 +1,24 @@
+.buttonClass {
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.filled {
+  composes: buttonClass;
+  border: 0;
+  color: white;
+  background-color: rgb(0, 147, 242);
+}
+
+.filled:hover {
+  background-color: rgb(0, 147, 255);
+  -webkit-box-shadow: 0px 0px 8px 3px rgba(0, 147, 255, .10);
+  box-shadow: 0px 0px 8px 3px rgba(0, 147, 255, .10);
+}
+
+.filled:active {
+  background-color: rgb(0, 147, 242)
+}

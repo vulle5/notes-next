@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { setUpIcons } from '../styles/icons'
 import Container from '../components/container'
+import Button from '../components/button'
 
 export default function Home() {
   setUpIcons()
@@ -24,6 +25,7 @@ export default function Home() {
       <p>Quick brown fox jumped over the fence</p>
       <FontAwesomeIcon icon="check-square" height={30} />
       <FontAwesomeIcon icon="coffee" height={30} />
+      <Button text="Test button" />
     </Container>
   )
 }
