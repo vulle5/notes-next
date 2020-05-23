@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { setUpIcons } from '../styles/icons'
-import Container from '../components/container'
-import Button from '../components/button'
-import Toast from '../components/toast'
+import Container from '../components/shared/container'
+import NotesList from '../components/index/notes-list'
 
 export default function Home() {
   setUpIcons()
@@ -20,14 +18,7 @@ export default function Home() {
         />
       </Head>
       <h1>Quick brown fox jumped over the fence</h1>
-      <h2>Quick brown fox jumped over the fence</h2>
-      <h3>Quick brown fox jumped over the fence</h3>
-      <h4>Quick brown fox jumped over the fence</h4>
-      <p>Quick brown fox jumped over the fence</p>
-      <FontAwesomeIcon icon="check-square" height={30} />
-      <FontAwesomeIcon icon="coffee" height={30} />
-      <Button text="Test button" />
-      <Toast />
+      <NotesList />
     </Container>
   )
 }

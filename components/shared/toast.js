@@ -14,7 +14,8 @@ const styles = () => (
     .container {
       display: inline-block;
       padding: 0 1rem;
-      background-color: #e6e6e6;
+      background-color: #2b2b2b;
+      color: white;
       border-radius: .5rem;
       position: absolute;
       bottom: 0;
