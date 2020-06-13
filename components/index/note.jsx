@@ -3,8 +3,8 @@ import React from 'react'
 export default function Note({ note }) {
   return (
     <div className="container">
-      <h4 className="title">{note.title}</h4>
-      <p>{note.content}</p>
+      {note.title && <h4 className="title">{note.title}</h4>}
+      {note.content && <p>{note.content}</p>}
       <style jsx>{`
         .container {
           display: flex;
