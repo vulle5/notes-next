@@ -17,8 +17,13 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <h1>Quick brown fox jumped over the fence</h1>
+      <h1 className="title">Quick brown fox jumped over the fence</h1>
       <NotesList />
+      <style jsx>{`
+        .title {
+          text-align: center;
+        }
+      `}</style>
     </Container>
   )
 }

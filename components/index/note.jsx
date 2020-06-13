@@ -1,0 +1,26 @@
+import React from 'react'
+
+export default function Note({ note }) {
+  return (
+    <div className="container">
+      <h4 className="title">{note.title}</h4>
+      <p>{note.content}</p>
+      <style jsx>{`
+        .container {
+          display: flex;
+          flex-wrap: wrap;
+          max-height: 400px;
+          width: 250px;
+          padding: 0.5rem;
+          border: 1px solid ${note.color ?? 'black'};
+          border-radius: 0.5rem;
+          margin: 0.5rem;
+        }
+        .title {
+          color: red;
+          margin-bottom: 0.5rem;
+        }
+      `}</style>
+    </div>
+  )
+}
