@@ -11,7 +11,8 @@ export default function NotesList() {
           display: flex;
           flex-wrap: wrap;
         }
-      `}</style>
+      `}
+      </style>
     </div>
   )
 }
@@ -50,5 +51,5 @@ const notes = [
     title: 'Note title here',
     content: 'Today I need to remember to pick up',
     color: '#ff0000'
-  },
+  }
 ]

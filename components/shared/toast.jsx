@@ -1,12 +1,12 @@
 import React from 'react';
 
 export default function Toast() {
-  return(
+  return (
     <div className="container">
       <h4>This is the message of the toast component</h4>
       {styles()}
     </div>
-  );
+  )
 }
 
 const styles = () => (
@@ -24,5 +24,6 @@ const styles = () => (
       -webkit-box-shadow: 0px 4px 8px 4px rgba(0,0,0,0.2); 
       box-shadow: 0px 4px 8px 4px rgba(0,0,0,0.2);
     }
-  `}</style>
+  `}
+  </style>
 )

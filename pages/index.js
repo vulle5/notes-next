@@ -1,7 +1,6 @@
 import Head from 'next/head'
 
-import { setUpIcons } from '../styles/icons'
-import firebase from '../services/firebase'
+import loadIcons from '../styles/icons'
 import Container from '../components/shared/container'
 import NotesList from '../components/index/notes-list'
 
@@ -24,11 +23,12 @@ export default function Home() {
         .title {
           text-align: center;
         }
-      `}</style>
+      `}
+      </style>
     </Container>
   )
 }
 
 function setUp() {
-  setUpIcons()
+  loadIcons()
 }
