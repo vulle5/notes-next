@@ -2,7 +2,8 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
-    node: true
+    node: true,
+    'jest/globals': true
   },
   extends: [
     'plugin:react/recommended',
@@ -16,17 +17,26 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react',
+    'jest'
   ],
   rules: {
+    // Common
     semi: ['error', 'never'],
     'no-nested-ternary': 'error',
     'comma-dangle': ['error', 'never'],
     'no-use-before-define': 'off',
     'arrow-parens': 'off',
+    // React
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'error',
     'react/jsx-one-expression-per-line': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }]
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    // Jest
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error'
   }
 }

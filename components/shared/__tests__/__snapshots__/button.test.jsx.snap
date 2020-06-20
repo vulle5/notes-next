@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render button with text 1`] = `
+<div>
+  <button
+    class="filled"
+    type="button"
+  >
+    test text
+  </button>
+</div>
+`;
