@@ -3,5 +3,5 @@ const Firestore = require('@google-cloud/firestore')
 
 export default new Firestore({
   projectId: 'notes-next',
-  keyFilename: '/firestore-notes-next.json'
+  keyFilename: 'C:/Users/sever/Code/notes-next/firestore-notes-next.json'
 })
