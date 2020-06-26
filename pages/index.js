@@ -3,6 +3,7 @@ import Head from 'next/head'
 import loadIcons from '../styles/icons'
 import Container from '../components/shared/container'
 import NotesList from '../components/index/notes-list'
+import NoteBar from 'components/index/note-bar'
 
 export default function Home() {
   setUp()
@@ -18,6 +19,7 @@ export default function Home() {
         />
       </Head>
       <h1 className="title">Quick brown fox jumped over the fence</h1>
+      <NoteBar />
       <NotesList />
       <style jsx>{`
         .title {
