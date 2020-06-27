@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-import loadIcons from '../styles/icons'
-import Container from '../components/shared/container'
-import NotesList from '../components/index/notes-list'
 import NoteBar from 'components/index/note-bar'
+import NotesList from '../components/index/notes-list'
+import Container from '../components/shared/container'
+import loadIcons from '../styles/icons'
 
 export default function Home() {
   setUp()

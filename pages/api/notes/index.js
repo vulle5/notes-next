@@ -1,7 +1,7 @@
 import firestore from 'services/firestore'
 
 export default async (req, res) => {
-  let notes = [];
+  const notes = []
 
   try {
     const collectionRef = await firestore.collection('notes').get()

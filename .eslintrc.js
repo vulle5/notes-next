@@ -27,16 +27,26 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'no-use-before-define': 'off',
     'arrow-parens': 'off',
+    // Import
+    'import/no-absolute-path': 'off',
     // React
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'error',
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/require-default-props': 'off',
     // Jest
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error'
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        moduleDirectory: ['node_modules', '.']
+      }
+    }
   }
 }

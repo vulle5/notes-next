@@ -1,0 +1,66 @@
+/* eslint-disable no-bitwise */
+/* eslint-disable no-param-reassign */
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+
+// TODO: Calculate start height on mount useEffect
+export default function ResizableTextarea({
+  minRows: propMinRows,
+  maxRows: propMaxRows,
+  ...textareaProps
+}) {
+  const minRows = propMinRows ?? 5
+  const maxRows = propMaxRows ?? 10
+  const [value, setValue] = useState('')
+  const [rows, setRows] = useState(propMinRows)
+
+  const handleChange = (event) => {
+    // TODO: Check this value. Should it be 1rem?
+    const textareaLineHeight = 24
+
+    const previousRows = event.target.rows
+    event.target.rows = minRows // reset number of rows in textarea
+
+    const currentRows = ~~(event.target.scrollHeight / textareaLineHeight)
+
+    if (currentRows === previousRows) {
+      event.target.rows = currentRows
+    }
+
+    if (currentRows >= maxRows) {
+      event.target.rows = maxRows
+      event.target.scrollTop = event.target.scrollHeight
+    }
+
+    setValue(event.target.value)
+    setRows(currentRows < maxRows ? currentRows : maxRows)
+  }
+
+  return (
+    <>
+      <textarea
+        rows={rows}
+        value={value}
+        onChange={handleChange}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...textareaProps}
+      />
+      <style jsx>
+        {`
+          textarea {
+            all: unset;
+            resize: none;
+            overflow: auto;
+            padding-left: 0.5rem;
+            margin-right: 0.5rem;
+          }
+        `}
+      </style>
+    </>
+  )
+}
+
+ResizableTextarea.propTypes = {
+  minRows: PropTypes.number,
+  maxRows: PropTypes.number
+}

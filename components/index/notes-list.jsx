@@ -31,24 +31,6 @@ const notes = [
   },
   {
     id: 3,
-    title: 'Note title here',
-    content: 'Today I need to remember to pick up',
-    color: '#ff0000'
-  },
-  {
-    id: 4,
-    content: 'Today I need to remember to pick up',
-    color: '#ff0000'
-  },
-  {
-    id: 5,
-    title: 'Note title here',
-    content: 'Today I need to remember to pick up',
-    color: '#ff0000'
-  },
-  {
-    id: 6,
-    title: 'Note title here',
     content: 'Today I need to remember to pick up',
     color: '#ff0000'
   }

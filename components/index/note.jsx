@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function Note({ note }) {
   return (
@@ -20,7 +21,20 @@ export default function Note({ note }) {
           color: red;
           margin-bottom: 0.5rem;
         }
-      `}</style>
+      `}
+      </style>
     </div>
   )
+}
+
+Note.defaultProps = {
+  note: {}
+}
+
+Note.propTypes = {
+  note: PropTypes.shape({
+    title: PropTypes.string,
+    color: PropTypes.string,
+    content: PropTypes.string
+  })
 }
