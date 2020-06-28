@@ -47,7 +47,8 @@ export default function ResizableTextarea({
           textarea {
             all: unset;
             resize: none;
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-wrap: break-word;
             padding-left: 0.5rem;
             margin-right: 0.5rem;
             margin: 0.5rem 0px;
