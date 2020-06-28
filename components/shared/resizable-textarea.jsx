@@ -49,9 +49,7 @@ export default function ResizableTextarea({
             resize: none;
             overflow-y: auto;
             overflow-wrap: break-word;
-            padding-left: 0.5rem;
-            margin-right: 0.5rem;
-            margin: 0.5rem 0px;
+            padding: 0.5rem;
           }
         `}
       </style>

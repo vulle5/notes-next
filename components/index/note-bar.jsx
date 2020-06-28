@@ -47,8 +47,7 @@ export default function NoteBar() {
         input {
           all: unset;
           height: 2rem;
-          padding-left: 0.5rem;
-          margin-right: 0.5rem;
+          padding: 0px 0.5rem;
         }
       `}
       </style>
