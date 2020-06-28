@@ -1,9 +1,7 @@
-/* eslint-disable no-bitwise */
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-// TODO: Calculate start height on mount useEffect
 export default function ResizableTextarea({
   minRows: propMinRows,
   maxRows: propMaxRows,
@@ -15,13 +13,12 @@ export default function ResizableTextarea({
   const [rows, setRows] = useState(propMinRows)
 
   const handleChange = (event) => {
-    // TODO: Check this value. Should it be 1rem?
     const textareaLineHeight = 24
 
     const previousRows = event.target.rows
     event.target.rows = minRows // reset number of rows in textarea
 
-    const currentRows = ~~(event.target.scrollHeight / textareaLineHeight)
+    const currentRows = Math.floor(event.target.scrollHeight / textareaLineHeight)
 
     if (currentRows === previousRows) {
       event.target.rows = currentRows
@@ -50,9 +47,10 @@ export default function ResizableTextarea({
           textarea {
             all: unset;
             resize: none;
-            overflow: auto;
+            overflow: hidden;
             padding-left: 0.5rem;
             margin-right: 0.5rem;
+            margin: 0.5rem 0px;
           }
         `}
       </style>

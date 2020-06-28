@@ -27,6 +27,7 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'no-use-before-define': 'off',
     'arrow-parens': 'off',
+    'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
     // Import
     'import/no-absolute-path': 'off',
     // React
