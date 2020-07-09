@@ -2,11 +2,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-export default function ResizableTextarea({
+const ResizableTextarea = ({
   minRows: propMinRows,
   maxRows: propMaxRows,
   ...textareaProps
-}) {
+}) => {
   const minRows = propMinRows ?? 5
   const maxRows = propMaxRows ?? 10
   const [value, setValue] = useState('')
@@ -61,3 +61,5 @@ ResizableTextarea.propTypes = {
   minRows: PropTypes.number,
   maxRows: PropTypes.number
 }
+
+export default ResizableTextarea

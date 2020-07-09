@@ -36,6 +36,7 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
     // Jest
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',

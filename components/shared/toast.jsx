@@ -1,13 +1,11 @@
 import React from 'react'
 
-export default function Toast() {
-  return (
-    <div className="container">
-      <h4>This is the message of the toast component</h4>
-      {styles()}
-    </div>
-  )
-}
+const Toast = () => (
+  <div className="container">
+    <h4>This is the message of the toast component</h4>
+    {styles()}
+  </div>
+)
 
 const styles = () => (
   <style jsx="true">{`
@@ -27,3 +25,5 @@ const styles = () => (
   `}
   </style>
 )
+
+export default Toast

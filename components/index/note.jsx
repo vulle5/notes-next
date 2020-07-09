@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function Note({ note }) {
+const Note = ({ note }) => {
   return (
     <div className="container">
       {note.title && <h4 className="title">{note.title}</h4>}
@@ -38,3 +38,5 @@ Note.propTypes = {
     content: PropTypes.string
   })
 }
+
+export default Note

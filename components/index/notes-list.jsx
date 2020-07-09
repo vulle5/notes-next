@@ -2,20 +2,18 @@ import React from 'react'
 
 import Note from './note'
 
-export default function NotesList() {
-  return (
-    <div className="container">
-      {notes.map(note => <Note key={note.id} note={note} />)}
-      <style jsx>{`
-        .container {
-          display: flex;
-          flex-wrap: wrap;
-        }
-      `}
-      </style>
-    </div>
-  )
-}
+const NotesList = () => (
+  <div className="container">
+    {notes.map(note => <Note key={note.id} note={note} />)}
+    <style jsx>{`
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    `}
+    </style>
+  </div>
+)
 
 const notes = [
   {
@@ -35,3 +33,5 @@ const notes = [
     color: '#ff0000'
   }
 ]
+
+export default NotesList

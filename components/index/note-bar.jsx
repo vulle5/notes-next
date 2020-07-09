@@ -1,35 +1,20 @@
 import React, { useState } from 'react'
 
-import ResizableTextarea from 'components/shared/resizable-textarea'
 import OutsideClickHandler from 'react-outside-click-handler'
+import NewNoteForm from './new-note-form'
 
-export default function NoteBar() {
-  const [showTitle, setShowTitle] = useState(false)
+const NoteBar = () => {
+  const [showContent, setShowContent] = useState(false)
 
   return (
     <div className="container">
       <OutsideClickHandler
-        onOutsideClick={() => setShowTitle(false)}
+        onOutsideClick={() => setShowContent(false)}
       >
-        <div className="wrapper">
-          {showTitle && (
-            <input
-              id="note-title"
-              name="note-title"
-              placeholder="Title"
-              type="text"
-            />
-          )}
-          <ResizableTextarea
-            id="note-content"
-            name="note-content"
-            maxRows={5}
-            minRows={1}
-            onFocus={() => setShowTitle(true)}
-            placeholder="Remind me to..."
-            type="text"
-          />
-        </div>
+        <NewNoteForm
+          showContent={showContent}
+          setShowContent={setShowContent}
+        />
       </OutsideClickHandler>
       <style jsx>{`
         .container {
@@ -40,17 +25,10 @@ export default function NoteBar() {
           border: 1px solid;
           border-radius: 0.5rem;
         }
-        .wrapper {
-          display: flex;
-          flex-direction: column
-        }
-        input {
-          all: unset;
-          height: 2rem;
-          padding: 0px 0.5rem;
-        }
       `}
       </style>
     </div>
   )
 }
+
+export default NoteBar
