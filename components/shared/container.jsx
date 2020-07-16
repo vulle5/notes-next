@@ -1,10 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './styles/container.module.css'
 
-// eslint-disable-next-line react/prop-types
 const Container = ({ children }) => (
   <div className={styles.container}>{children}</div>
 )
+
+Container.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default Container

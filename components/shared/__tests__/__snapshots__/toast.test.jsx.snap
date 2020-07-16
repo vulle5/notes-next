@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render button with text 1`] = `
+<div
+  class="jsx-1434399058 container"
+>
+  <h4
+    class="jsx-1434399058"
+  >
+    This is the message of the toast component
+  </h4>
+</div>
+`;

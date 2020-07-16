@@ -3,14 +3,12 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const ResizableTextarea = ({
-  minRows: propMinRows,
-  maxRows: propMaxRows,
+  minRows,
+  maxRows,
   ...textareaProps
 }) => {
-  const minRows = propMinRows ?? 5
-  const maxRows = propMaxRows ?? 10
   const [value, setValue] = useState('')
-  const [rows, setRows] = useState(propMinRows)
+  const [rows, setRows] = useState(minRows)
 
   const handleChange = (event) => {
     const textareaLineHeight = 24
@@ -39,7 +37,6 @@ const ResizableTextarea = ({
         rows={rows}
         value={value}
         onChange={handleChange}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...textareaProps}
       />
       <style jsx>
@@ -55,6 +52,11 @@ const ResizableTextarea = ({
       </style>
     </>
   )
+}
+
+ResizableTextarea.defaultProps = {
+  minRows: 5,
+  maxRows: 10
 }
 
 ResizableTextarea.propTypes = {
