@@ -11,8 +11,7 @@ export default async (req, res) => {
       await create(req, res)
       break
     default:
-      res.setHeader('Allow', 'GET, POST')
-      res.status(405).json({ message: '405 Method Not Allowed' })
+      res.status(404).json({ message: '404 Not Found' })
       break
   }
 }
@@ -46,9 +45,9 @@ const create = async (req, res) => {
       } else {
         res.status(404).json({ message: '404 Not found' })
       }
-      return
+    } else {
+      res.status(400).json({ message: 'No body with the request' })
     }
-    res.status(400).json({ message: 'No body with the request' })
   } catch (err) {
     res.status(500).json({ message: 'Internal server error 500' })
   }
