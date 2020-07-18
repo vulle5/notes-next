@@ -1,6 +1,10 @@
 import Head from 'next/head'
 import { SWRConfig } from 'swr'
 
+// Options
+import getSWROptions from 'options/useSWR'
+
+// Components
 import NoteBar from 'components/index/note-bar'
 import NotesList from '../components/index/notes-list'
 import Container from '../components/shared/container'
@@ -11,9 +15,7 @@ export default function Home() {
 
   return (
     <SWRConfig
-      value={{
-        fetcher: (...args) => fetch(...args).then(res => res.json())
-      }}
+      value={getSWROptions()}
     >
       <Container>
         <Head>
