@@ -1,12 +1,13 @@
 import React from 'react'
-import useAPI from 'hooks/useAPI'
+import useDate from 'hooks/useData'
 
 import Note from './note'
 
 const NotesList = () => {
-  const { data: notes, isLoading } = useAPI('notes')
+  const { data: notes, isLoading, isError } = useDate('notes')
 
   if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>Unexpected error</div>
 
   return (
     <div className="container">

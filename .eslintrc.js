@@ -26,7 +26,7 @@ module.exports = {
     'no-nested-ternary': 'error',
     'comma-dangle': ['error', 'never'],
     'no-use-before-define': 'off',
-    'arrow-parens': 'off',
+    'arrow-parens': ['error', 'as-needed'],
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
     // Import
     'import/no-absolute-path': 'off',

@@ -30,6 +30,7 @@ const index = async (req, res) => {
 
 const create = async (req, res) => {
   const { body } = req
+  console.log(body)
 
   try {
     if (body) {

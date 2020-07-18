@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
+import { mutate } from 'swr'
 
 import ResizableTextarea from 'components/shared/resizable-textarea'
 import Button from 'components/shared/button'
+import useData from 'hooks/useData'
+import notesService from 'services/api/notes'
 
 const NewNoteForm = ({ showContent, setShowContent }) => {
+  const { data } = useData('notes')
+  const titleRef = useRef(null)
+  const contentRef = useRef(null)
+
   const onFormSubmit = event => {
     event.preventDefault()
-    // TODO: Implement submit
+
+    const newNote = {
+      id: data.length.toString(),
+      title: titleRef?.current?.value,
+      content: contentRef?.current?.value
+    }
+
+    // update the local data immediately, but disable the revalidation
+    mutate('/api/notes', [...data, newNote], false)
+    // trigger a revalidation (refetch) to make sure our local data is correct
+    // append the new note with existing notes
+    mutate('/api/notes', async notes => {
+      const note = await notesService.addNote(newNote)
+      return [...notes, note]
+    })
   }
 
   const onTextAreaKeyPress = event => {
@@ -25,6 +46,7 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
           id="note-title"
           name="note-title"
           placeholder="Title"
+          ref={titleRef}
           type="text"
         />
       )}
@@ -34,8 +56,9 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
         maxRows={5}
         minRows={1}
         onFocus={() => setShowContent(true)}
-        onKeyPress={(e) => onTextAreaKeyPress(e)}
+        onKeyPress={e => onTextAreaKeyPress(e)}
         placeholder="Remind me to..."
+        textareaRef={contentRef}
         type="text"
       />
       {showContent && <Button text="CREATE" type="submit" />}
