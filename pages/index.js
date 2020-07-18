@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { SWRConfig } from 'swr'
 
 import NoteBar from 'components/index/note-bar'
 import NotesList from '../components/index/notes-list'
@@ -9,25 +10,31 @@ export default function Home() {
   setUp()
 
   return (
-    <Container>
-      <Head>
-        <title>Notes-Next</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <h1 className="title">Quick brown fox jumped over the fence</h1>
-      <NoteBar />
-      <NotesList />
-      <style jsx>{`
-        .title {
-          text-align: center;
-        }
-      `}
-      </style>
-    </Container>
+    <SWRConfig
+      value={{
+        fetcher: (...args) => fetch(...args).then(res => res.json())
+      }}
+    >
+      <Container>
+        <Head>
+          <title>Notes-Next</title>
+          <link rel="icon" href="/favicon.ico" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <h1 className="title">Quick brown fox jumped over the fence</h1>
+        <NoteBar />
+        <NotesList />
+        <style jsx>{`
+          .title {
+            text-align: center;
+          }
+        `}
+        </style>
+      </Container>
+    </SWRConfig>
   )
 }
 

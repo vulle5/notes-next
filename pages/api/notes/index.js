@@ -36,7 +36,7 @@ const create = async (req, res) => {
       const docRef = await firestore.collection('notes').add({
         title: body.title ?? '',
         content: body.content ?? '',
-        color: body.color ?? '#FFFFFF'
+        color: body.color ?? '#000000'
       })
 
       const doc = await docRef.get()
