@@ -4,6 +4,9 @@ const url = 'http://localhost:3000/api/notes'
 const addNote = async note => {
   const data = await fetch(url, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(note)
   }).then(res => res.json())
 

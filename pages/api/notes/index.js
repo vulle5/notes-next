@@ -20,6 +20,7 @@ const index = async (req, res) => {
   const notes = []
 
   try {
+    // TODO: Order by timestamp
     const collectionRef = await firestore.collection('notes').get()
     collectionRef.forEach(doc => notes.push({ id: doc.id, ...doc.data() }))
     res.status(200).json(notes)
@@ -30,10 +31,11 @@ const index = async (req, res) => {
 
 const create = async (req, res) => {
   const { body } = req
-  console.log(body)
 
   try {
     if (body) {
+      // TODO: Fix wierd bug when adding notes
+      // TODO: Add timestamp to order documents
       const docRef = await firestore.collection('notes').add({
         title: body.title ?? '',
         content: body.content ?? '',

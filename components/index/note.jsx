@@ -19,6 +19,7 @@ const Note = ({ note }) => (
       .title {
         color: red;
         margin-bottom: 0.5rem;
+        width: 100%;
       }
     `}
     </style>

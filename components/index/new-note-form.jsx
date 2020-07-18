@@ -27,6 +27,7 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
     // append the new note with existing notes
     mutate('/api/notes', async notes => {
       const note = await notesService.addNote(newNote)
+      // TODO: Try that split method thing there is note flickering on screen when adding new note
       return [...notes, note]
     })
   }
