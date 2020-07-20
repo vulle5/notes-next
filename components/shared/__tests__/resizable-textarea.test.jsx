@@ -12,7 +12,8 @@ test('has correct default props', () => {
   expect(ResizableTextarea.defaultProps).toBeDefined()
   expect(ResizableTextarea.defaultProps).toStrictEqual({
     minRows: 5,
-    maxRows: 10
+    maxRows: 10,
+    textareaRef: null
   })
 })
 
