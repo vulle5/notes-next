@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { mutate } from 'swr'
 
 import ResizableTextarea from 'components/shared/resizable-textarea'
 import Button from 'components/shared/button'
@@ -8,7 +7,7 @@ import useData from 'hooks/useData'
 import notesService from 'services/api/notes'
 
 const NewNoteForm = ({ showContent, setShowContent }) => {
-  const { data } = useData('notes')
+  const { data, mutate } = useData('notes')
   const titleRef = useRef(null)
   const contentRef = useRef(null)
 
@@ -22,14 +21,18 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
     }
 
     // update the local data immediately, but disable the revalidation
-    mutate('/api/notes', [...data, newNote], false)
+    mutate([...data, newNote], false)
     // trigger a revalidation (refetch) to make sure our local data is correct
     // append the new note with existing notes
-    mutate('/api/notes', async notes => {
+    mutate(async notes => {
       const note = await notesService.addNote(newNote)
-      // TODO: Try that split method thing there is note flickering on screen when adding new note
-      return [...notes, note]
+      return [note, ...notes.slice(1)]
     })
+
+    if (titleRef?.current && contentRef?.current) {
+      titleRef.current.value = ''
+      contentRef.current.value = ''
+    }
   }
 
   const onTextAreaKeyPress = event => {

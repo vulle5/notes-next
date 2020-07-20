@@ -8,7 +8,6 @@ const ResizableTextarea = ({
   textareaRef,
   ...textareaProps
 }) => {
-  const [value, setValue] = useState('')
   const [rows, setRows] = useState(minRows)
 
   const handleChange = event => {
@@ -28,7 +27,6 @@ const ResizableTextarea = ({
       event.target.scrollTop = event.target.scrollHeight
     }
 
-    setValue(event.target.value)
     setRows(currentRows < maxRows ? currentRows : maxRows)
   }
 
@@ -36,7 +34,6 @@ const ResizableTextarea = ({
     <>
       <textarea
         rows={rows}
-        value={value}
         onChange={handleChange}
         ref={textareaRef}
         {...textareaProps}

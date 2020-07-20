@@ -1,5 +1,5 @@
 import firestore from 'services/firestore'
-import { FieldValue } from '@google-cloud/firestore'
+import { Timestamp } from '@google-cloud/firestore'
 
 export default async (req, res) => {
   const { method } = req
@@ -22,7 +22,10 @@ const index = async (req, res) => {
 
   try {
     const collectionRef = await firestore.collection('notes').orderBy('createdAt').get()
-    collectionRef.forEach(doc => notes.push({ id: doc.id, ...doc.data() }))
+    collectionRef.forEach(doc => {
+      const { createdAt, ...rest } = doc.data()
+      notes.push({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
+    })
     res.status(200).json(notes)
   } catch (err) {
     res.status(500).json({ message: 'Internal server error 500' })
@@ -38,7 +41,7 @@ const create = async (req, res) => {
         title: body.title ?? '',
         content: body.content ?? '',
         color: body.color ?? '#000000',
-        createdAt: FieldValue.serverTimestamp()
+        createdAt: Timestamp.now()
       })
 
       const doc = await docRef.get()
@@ -51,7 +54,6 @@ const create = async (req, res) => {
       res.status(400).json({ message: 'No body with the request' })
     }
   } catch (err) {
-    console.log(err)
     res.status(500).json({ message: 'Internal server error 500' })
   }
 }
