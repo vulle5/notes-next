@@ -25,6 +25,7 @@ export default function Home() {
             href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap"
             rel="stylesheet"
           />
+          <link rel="preload" href="/api/notes" as="fetch" crossOrigin="anonymous" />
         </Head>
         <h1 className="title">Quick brown fox jumped over the fence</h1>
         <NoteBar />
