@@ -22,11 +22,10 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
 
     // update the local data immediately, but disable the revalidation
     mutate([...data, newNote], false)
-    // trigger a revalidation (refetch) to make sure our local data is correct
-    // append the new note with existing notes
+    // send update to server and trigger a revalidation (refetch)
     mutate(async notes => {
       const note = await notesService.addNote(newNote)
-      return [note, ...notes.slice(1)]
+      return [...notes.slice(0, -1), note]
     })
 
     if (titleRef?.current && contentRef?.current) {
