@@ -11,9 +11,7 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 2020,
-    ecmaFeatures: {
-      jsx: true
-    },
+    ecmaFeatures: { jsx: true },
     sourceType: 'module'
   },
   plugins: [
@@ -28,6 +26,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'arrow-parens': ['error', 'as-needed'],
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
+    'object-curly-newline': 'off',
     // Import
     'import/no-absolute-path': 'off',
     // React
