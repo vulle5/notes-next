@@ -21,7 +21,7 @@ const index = async (req, res) => {
   const notes = []
 
   try {
-    const collectionRef = await firestore.collection('notes').orderBy('createdAt').get()
+    const collectionRef = await firestore.collection('notes').orderBy('createdAt', 'desc').get()
     collectionRef.forEach(doc => {
       const { createdAt, ...rest } = doc.data()
       notes.push({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
