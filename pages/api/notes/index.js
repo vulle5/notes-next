@@ -1,5 +1,5 @@
-import firestore from 'services/firestore'
-import { Timestamp } from '@google-cloud/firestore'
+import { firestore } from 'firebase-admin'
+import { db } from 'services/firebase'
 
 export default async (req, res) => {
   const { method } = req
@@ -21,7 +21,7 @@ const index = async (req, res) => {
   const notes = []
 
   try {
-    const collectionRef = await firestore.collection('notes').orderBy('createdAt', 'desc').get()
+    const collectionRef = await db.collection('notes').orderBy('createdAt', 'desc').get()
     collectionRef.forEach(doc => {
       const { createdAt, ...rest } = doc.data()
       notes.push({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
@@ -34,10 +34,11 @@ const index = async (req, res) => {
 
 const create = async (req, res) => {
   const { body } = req
+  const { Timestamp } = firestore
 
   try {
     if (body) {
-      const docRef = await firestore.collection('notes').add({
+      const docRef = await db.collection('notes').add({
         title: body.title ?? '',
         content: body.content ?? '',
         color: body.color ?? '#000000',

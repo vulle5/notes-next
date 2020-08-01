@@ -1,4 +1,4 @@
-import firestore from 'services/firestore'
+import { db } from 'services/firebase'
 
 export default async (req, res) => {
   const { method } = req
@@ -20,7 +20,7 @@ const show = async (req, res) => {
   const { query } = req
 
   try {
-    const doc = await firestore.collection('notes').doc(query.noteId).get()
+    const doc = await db.collection('notes').doc(query.noteId).get()
     if (doc.exists) {
       const { createdAt, ...rest } = doc.data()
       res.json({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
@@ -36,7 +36,7 @@ const destroy = async (req, res) => {
   const { query } = req
 
   try {
-    await firestore.collection('notes').doc(query.noteId).delete()
+    await db.collection('notes').doc(query.noteId).delete()
     res.status(204).end()
   } catch (err) {
     res.status(500).json({ message: 'Internal server error 500' })
