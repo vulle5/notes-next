@@ -47,6 +47,12 @@ module.exports = {
     'import/resolver': {
       node: {
         moduleDirectory: ['node_modules', '.']
+      },
+      alias: {
+        map: [
+          ['\\$shared/*', 'components/shared/*']
+        ],
+        extensions: ['.js', '.jsx', '.json']
       }
     }
   }

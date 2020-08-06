@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
-import ResizableTextarea from 'components/shared/resizable-textarea'
-import Button from 'components/shared/button'
 import useData from 'hooks/useData'
 import notesService from 'services/api/notes'
+import ResizableTextarea from '$shared/resizable-textarea'
+import Button from '$shared/button'
 
 const NewNoteForm = ({ showContent, setShowContent }) => {
   const { data, mutate } = useData('notes')

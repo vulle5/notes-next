@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not crash without data 1`] = `
+<div
+  class="jsx-2449387748 container"
+/>
+`;
+
+exports[`should render a note component 1`] = `
+<div
+  class="jsx-2503106702 container"
+>
+  <h4
+    class="jsx-2503106702 title"
+  >
+    note title
+  </h4>
+  <p
+    class="jsx-2503106702"
+  >
+    note content
+  </p>
+</div>
+`;
