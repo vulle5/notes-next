@@ -47,7 +47,8 @@ const create = async (req, res) => {
 
       const doc = await docRef.get()
       if (doc.exists) {
-        res.status(200).json({ id: doc.id, ...doc.data() })
+        const { createdAt, ...rest } = doc.data()
+        res.status(200).json({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
       } else {
         res.status(404).json({ message: '404 Not found' })
       }

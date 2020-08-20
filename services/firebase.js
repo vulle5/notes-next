@@ -11,6 +11,7 @@ if (!admin.apps.length) {
 }
 
 const db = admin.firestore()
+const auth = admin.auth()
 
 // eslint-disable-next-line import/prefer-default-export
-export { db }
+export { db, auth }
