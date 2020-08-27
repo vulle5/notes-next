@@ -1,6 +1,4 @@
 const fetcher = (url, options) => {
-  const updatedOptions = { ...options }
-
   const defaultOptions = {
     method: 'GET',
     headers: {
@@ -9,7 +7,7 @@ const fetcher = (url, options) => {
     body: JSON.stringify(options.body)
   }
 
-  return fetch(url, { ...defaultOptions, ...updatedOptions })
+  return fetch(url, { ...defaultOptions, ...options })
 }
 
 export default fetcher
