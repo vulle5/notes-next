@@ -5,7 +5,7 @@ export default async (req, res) => {
 
   switch (method) {
     case 'POST':
-      await session(req, res)
+      await sessionLogin(req, res)
       break
     default:
       res.status(404).json({ message: '404 Not Found' })
@@ -13,11 +13,10 @@ export default async (req, res) => {
   }
 }
 
-// Set session expiration to 1 days.
-// TODO: Change to 30 days add to env
-const expiresIn = 60 * 60 * 24 * 1 * 1000
+// Set session expiration to 2 weeks.
+const expiresIn = 60 * 60 * 24 * 14 * 1000
 
-const session = async (req, res) => {
+const sessionLogin = async (req, res) => {
   // Get the ID token
   const { idToken } = req.body
 
@@ -26,7 +25,7 @@ const session = async (req, res) => {
     // TODO: Add to env
     const isSecure = process.env.NODE_ENV === 'production' ? 'Secure' : ''
 
-    res.setHeader('Set-Cookie', `session=${sessionCookie}; maxAge=${expiresIn}; HttpOnly; ${isSecure}`)
+    res.setHeader('Set-Cookie', `session=${sessionCookie}; maxAge=${expiresIn}; SameSite=Lax; HttpOnly; ${isSecure}`)
     res.json({ message: 'success' })
   } catch (err) {
     res.status(401).json({ message: err.message })

@@ -12,10 +12,10 @@ const login = async (email, password) => {
 
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(({ user }) => user.getIdToken(true))
-    // TODO: Handle CSRF
-    .then(idToken => fetch(url, { method: 'POST', body: { idToken } }))
+    .then(idToken => fetch(`${url}/login`, { method: 'POST', body: { idToken } }))
+    // Logout from client side
+    .then(() => firebase.auth().signOut())
     // TODO: Redirect from login to home
-    .then(() => true)
     .catch(err => {
       error = err
     })
@@ -26,7 +26,7 @@ const login = async (email, password) => {
 const logout = async () => {
   let error = null
 
-  firebase.auth().signOut()
+  fetch(`${url}/logout`, { method: 'POST' })
     .catch(err => {
       error = err
     })
