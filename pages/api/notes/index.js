@@ -1,19 +1,27 @@
 import { firestore } from 'firebase-admin'
 import { db } from 'services/firebase'
 
+import { validToken } from 'helpers/api/auth'
+
 export default async (req, res) => {
+  const isValid = await validToken(req)
+
   const { method } = req
 
-  switch (method) {
-    case 'GET':
-      await index(req, res)
-      break
-    case 'POST':
-      await create(req, res)
-      break
-    default:
-      res.status(404).json({ message: '404 Not Found' })
-      break
+  if (isValid) {
+    switch (method) {
+      case 'GET':
+        await index(req, res)
+        break
+      case 'POST':
+        await create(req, res)
+        break
+      default:
+        res.status(404).json({ message: '404 Not Found' })
+        break
+    }
+  } else {
+    res.status(401).json({ message: '401 Unauthorized' })
   }
 }
 

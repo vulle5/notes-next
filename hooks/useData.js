@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-export default endpoint => {
+const useData = endpoint => {
   const { data, error, ...rest } = useSWR(`/api/${endpoint}`)
 
   return {
@@ -10,3 +10,5 @@ export default endpoint => {
     ...rest
   }
 }
+
+export default useData

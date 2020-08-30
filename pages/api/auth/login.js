@@ -25,7 +25,13 @@ const sessionLogin = async (req, res) => {
     // TODO: Add to env
     const isSecure = process.env.NODE_ENV === 'production' ? 'Secure' : ''
 
-    res.setHeader('Set-Cookie', `session=${sessionCookie}; maxAge=${expiresIn}; SameSite=Lax; HttpOnly; ${isSecure}`)
+    res.setHeader(
+      'Set-Cookie',
+      [
+        `session=${sessionCookie}; path=/api; maxAge=${expiresIn}; SameSite=Lax; HttpOnly; ${isSecure}`,
+        `loggedIn=1; path=/; maxAge=${expiresIn}; SameSite=Lax; ${isSecure}`
+      ]
+    )
     res.json({ message: 'success' })
   } catch (err) {
     res.status(401).json({ message: err.message })

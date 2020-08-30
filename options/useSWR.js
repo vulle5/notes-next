@@ -1,4 +1,4 @@
-export default () => {
+const options = () => {
   if (process.env.NODE_ENV === 'development') {
     return devOptions
   }
@@ -23,3 +23,5 @@ const devOptions = {
 const prodOptions = {
   ...defaultOptions
 }
+
+export default options

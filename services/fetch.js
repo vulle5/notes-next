@@ -1,13 +1,18 @@
-const fetcher = (url, options) => {
-  const defaultOptions = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(options.body)
-  }
+const defaultOptions = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: {}
+}
 
-  return fetch(url, { ...defaultOptions, ...options })
+const fetcher = (url, options) => {
+  const updatedOptions = { ...options }
+
+  // Modify options
+  updatedOptions.body = JSON.stringify(options.body)
+
+  return fetch(url, { ...defaultOptions, ...updatedOptions })
 }
 
 export default fetcher
