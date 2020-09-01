@@ -1,10 +1,10 @@
 import React from 'react'
-import useDate from 'hooks/useData'
+import useNotes from 'hooks/useNotes'
 
 import Note from './note'
 
 const NotesList = () => {
-  const { data: notes, isLoading, isError } = useDate('notes')
+  const { data: notes, isLoading, isError } = useNotes()
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Unexpected error</div>

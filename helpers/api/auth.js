@@ -1,16 +1,17 @@
 import { auth } from 'firebase-admin'
 
-const validToken = async req => {
+const verifyToken = async req => {
   const sessionCookie = req.cookies.session ?? ''
   // Verify the session cookie. In this case an additional check is added to detect
   // if the user's Firebase session was revoked, user deleted/disabled, etc.
   try {
-    await auth().verifySessionCookie(sessionCookie, false)
-    return true
+    const decodedToken = await auth().verifySessionCookie(sessionCookie, false)
+    req.userToken = decodedToken
   } catch (error) {
-    return false
+    req.userToken = null
+    throw error
   }
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export { validToken }
+export { verifyToken }

@@ -23,7 +23,5 @@ const sessionLogout = async (req, res) => {
     await auth().revokeRefreshTokens(decodedClaims.sub)
   } catch (err) {
     // TODO: Log error
-  } finally {
-    // TODO: Redirect to login page
   }
 }

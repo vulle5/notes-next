@@ -1,14 +1,15 @@
 import { firestore } from 'firebase-admin'
 import { db } from 'services/firebase'
 
-import { validToken } from 'helpers/api/auth'
+import { verifyToken } from 'helpers/api/auth'
 
 export default async (req, res) => {
-  const isValid = await validToken(req)
+  try {
+    // Before actions
+    await verifyToken(req)
 
-  const { method } = req
+    const { method } = req
 
-  if (isValid) {
     switch (method) {
       case 'GET':
         await index(req, res)
@@ -20,8 +21,8 @@ export default async (req, res) => {
         res.status(404).json({ message: '404 Not Found' })
         break
     }
-  } else {
-    res.status(401).json({ message: '401 Unauthorized' })
+  } catch (error) {
+    res.status(401).json(error)
   }
 }
 
@@ -29,7 +30,7 @@ const index = async (req, res) => {
   const notes = []
 
   try {
-    const collectionRef = await db.collection('notes').orderBy('createdAt', 'desc').get()
+    const collectionRef = await db.collection('notes').where('uid', '==', req.userToken.uid).orderBy('createdAt', 'desc').get()
     collectionRef.forEach(doc => {
       const { createdAt, ...rest } = doc.data()
       notes.push({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
@@ -50,7 +51,8 @@ const create = async (req, res) => {
         title: body.title ?? '',
         content: body.content ?? '',
         color: body.color ?? '#000000',
-        createdAt: Timestamp.now()
+        createdAt: Timestamp.now(),
+        uid: req.userToken.uid
       })
 
       const doc = await docRef.get()

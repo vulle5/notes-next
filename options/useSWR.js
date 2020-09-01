@@ -11,7 +11,14 @@ const options = () => {
 }
 
 const defaultOptions = {
-  fetcher: (...args) => fetch(...args).then(res => res.json())
+  fetcher: (...args) => fetch(...args)
+    .then(res => {
+      if (res.status >= 200 && res.status <= 299) {
+        return res.json()
+      }
+      // If error throw it to let SWR know that an error occurred
+      return res.text().then(message => { throw Error(message) })
+    })
 }
 
 const devOptions = {

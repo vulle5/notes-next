@@ -1,13 +1,13 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
-import useData from 'hooks/useData'
+import useNotes from 'hooks/useNotes'
 import notesService from 'services/api/notes'
 import ResizableTextarea from '$shared/resizable-textarea'
 import Button from '$shared/button'
 
 const NewNoteForm = ({ showContent, setShowContent }) => {
-  const { data, mutate } = useData('notes')
+  const { data, mutate } = useNotes()
   const titleRef = useRef(null)
   const contentRef = useRef(null)
 
@@ -15,7 +15,8 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
     event.preventDefault()
 
     const newNote = {
-      id: data.length.toString(),
+      // Set id so react does not warn about keys in an array
+      id: data?.length?.toString() ?? '1',
       title: titleRef?.current?.value,
       content: contentRef?.current?.value
     }
