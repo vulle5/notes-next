@@ -22,7 +22,7 @@ export default async (req, res) => {
         break
     }
   } catch (error) {
-    res.status(401).json(error)
+    res.status(403).json(error)
   }
 }
 

@@ -20,7 +20,7 @@ export default async (req, res) => {
         break
     }
   } catch (error) {
-    res.status(401).json(error)
+    res.status(403).json(error)
   }
 }
 
@@ -51,7 +51,7 @@ const destroy = async (req, res) => {
       await dbQuery.delete()
       res.status(204).end()
     } else {
-      res.status(401).json({ message: 'Access forbidden 403' })
+      res.status(403).json({ message: 'Access forbidden 403' })
     }
   } catch (err) {
     res.status(500).json({ message: 'Internal server error 500' })
