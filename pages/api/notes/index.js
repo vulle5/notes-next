@@ -32,8 +32,13 @@ const index = async (req, res) => {
   try {
     const collectionRef = await db.collection('notes').where('uid', '==', req.userToken.uid).orderBy('createdAt', 'desc').get()
     collectionRef.forEach(doc => {
-      const { createdAt, ...rest } = doc.data()
-      notes.push({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
+      const { createdAt, updatedAt, ...rest } = doc.data()
+      notes.push({
+        id: doc.id,
+        createdAt: createdAt.toDate(),
+        updatedAt: updatedAt.toDate(),
+        ...rest
+      })
     })
     res.status(200).json(notes)
   } catch (err) {
@@ -51,14 +56,20 @@ const create = async (req, res) => {
         title: body.title ?? '',
         content: body.content ?? '',
         color: body.color ?? '#000000',
+        updatedAt: Timestamp.now(),
         createdAt: Timestamp.now(),
         uid: req.userToken.uid
       })
 
       const doc = await docRef.get()
       if (doc.exists) {
-        const { createdAt, ...rest } = doc.data()
-        res.status(200).json({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
+        const { createdAt, updatedAt, ...rest } = doc.data()
+        res.status(200).json({
+          id: doc.id,
+          createdAt: createdAt.toDate(),
+          updatedAt: updatedAt.toDate(),
+          ...rest
+        })
       } else {
         res.status(404).json({ message: '404 Not found' })
       }

@@ -1,3 +1,4 @@
+import { firestore } from 'firebase-admin'
 import { db } from 'services/firebase'
 import { verifyToken } from 'helpers/api/auth'
 
@@ -15,6 +16,9 @@ export default async (req, res) => {
       case 'DELETE':
         await destroy(req, res)
         break
+      case 'PATCH':
+        await update(req, res)
+        break
       default:
         res.status(404).json({ message: '404 Not Found' })
         break
@@ -30,8 +34,14 @@ const show = async (req, res) => {
   try {
     const doc = await db.collection('notes').doc(query.noteId).get()
     if (doc.get('uid') === req.userToken.uid) {
-      const { createdAt, ...rest } = doc.data()
-      res.json({ id: doc.id, createdAt: createdAt.toDate(), ...rest })
+      const { createdAt, updatedAt, ...rest } = doc.data()
+
+      res.status(200).json({
+        id: doc.id,
+        createdAt: createdAt.toDate(),
+        updatedAt: updatedAt.toDate(),
+        ...rest
+      })
     } else {
       res.status(404).json({ message: 'Note does not exist' })
     }
@@ -52,6 +62,39 @@ const destroy = async (req, res) => {
       res.status(204).end()
     } else {
       res.status(403).json({ message: 'Access forbidden 403' })
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Internal server error 500' })
+  }
+}
+
+const update = async (req, res) => {
+  const { query, body } = req
+  const { Timestamp } = firestore
+  const dbQuery = db.collection('notes').doc(query.noteId)
+
+  try {
+    const doc = await dbQuery.get()
+
+    if (doc.get('uid') === req.userToken.uid) {
+      const newNote = {
+        ...(body.title && { title: body.title }),
+        ...(body.content && { content: body.content }),
+        ...(body.color && { color: body.color }),
+        updatedAt: Timestamp.now()
+      }
+      await dbQuery.update(newNote)
+      const updateDoc = await dbQuery.get()
+      const { createdAt, updatedAt, ...rest } = updateDoc.data()
+
+      res.status(200).json({
+        id: updateDoc.id,
+        createdAt: createdAt.toDate(),
+        updatedAt: updatedAt.toDate(),
+        ...rest
+      })
+    } else {
+      res.status(404).json({ message: 'Note does not exist' })
     }
   } catch (err) {
     res.status(500).json({ message: 'Internal server error 500' })
