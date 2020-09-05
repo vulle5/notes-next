@@ -28,7 +28,7 @@ const sessionLogin = async (req, res) => {
     res.setHeader(
       'Set-Cookie',
       [
-        `session=${sessionCookie}; path=/api; maxAge=${expiresIn}; SameSite=Lax; HttpOnly; ${isSecure}`,
+        `session=${sessionCookie}; path=/; maxAge=${expiresIn}; SameSite=Lax; HttpOnly; ${isSecure}`,
         `loggedIn=1; path=/; maxAge=${expiresIn}; SameSite=Lax; ${isSecure}`
       ]
     )
