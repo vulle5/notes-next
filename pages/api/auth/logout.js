@@ -21,7 +21,8 @@ const sessionLogout = async (req, res) => {
   try {
     const decodedClaims = await auth().verifySessionCookie(sessionCookie)
     await auth().revokeRefreshTokens(decodedClaims.sub)
+    res.status(200).end()
   } catch (err) {
-    // TODO: Log error
+    res.status(403).json({ message: err.message })
   }
 }

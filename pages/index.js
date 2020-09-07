@@ -6,8 +6,9 @@ import getSWROptions from 'options/useSWR'
 
 // Components
 import NoteBar from 'components/index/note-bar'
-import NotesList from '../components/index/notes-list'
-import Container from '../components/shared/container'
+import LogoutButton from 'components/index/logout-button'
+import NotesList from 'components/index/notes-list'
+import Container from 'components/shared/container'
 import loadIcons from '../styles/icons'
 
 export default function Home() {
@@ -27,12 +28,16 @@ export default function Home() {
           />
           <link rel="preload" href="/api/notes" as="fetch" crossOrigin="anonymous" />
         </Head>
-        <h1 className="title">Quick brown fox jumped over the fence</h1>
+        <div className="f-center">
+          <h1 className="title">Quick brown fox jumped over the fence</h1>
+          <LogoutButton />
+        </div>
         <NoteBar />
         <NotesList />
         <style jsx>{`
           .title {
             text-align: center;
+            flex-grow: 1;
           }
         `}
         </style>

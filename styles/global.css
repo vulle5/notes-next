@@ -18,3 +18,13 @@ h1, h2, h3, h4, h5, h6, button {
 * {
   box-sizing: border-box;
 }
+
+.f-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row {
+  flex-direction: row;
+}

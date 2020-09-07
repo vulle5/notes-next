@@ -31,7 +31,7 @@ const sessionLogin = async (req, res) => {
         `loggedIn=1; path=/; Max-Age=${expiresIn / 1000}; SameSite=Lax; ${isSecure}`
       ]
     )
-    res.json({ message: 'success' })
+    res.status(200).end()
   } catch (err) {
     res.status(403).json({ message: err.message })
   }
