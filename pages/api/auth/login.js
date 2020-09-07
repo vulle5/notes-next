@@ -13,7 +13,7 @@ export default async (req, res) => {
   }
 }
 
-// Set session expiration to 2 weeks.
+// Set session expiration to 2 weeks (milliseconds).
 const expiresIn = 60 * 60 * 24 * 14 * 1000
 
 const sessionLogin = async (req, res) => {
@@ -22,14 +22,13 @@ const sessionLogin = async (req, res) => {
 
   try {
     const sessionCookie = await verifyToken(idToken)
-    // TODO: Add to env
-    const isSecure = process.env.NODE_ENV === 'production' ? 'Secure' : ''
+    const isSecure = process.env.SESSION_COOKIE_SECURE
 
     res.setHeader(
       'Set-Cookie',
       [
-        `session=${sessionCookie}; path=/; maxAge=${expiresIn}; SameSite=Lax; HttpOnly; ${isSecure}`,
-        `loggedIn=1; path=/; maxAge=${expiresIn}; SameSite=Lax; ${isSecure}`
+        `session=${sessionCookie}; path=/; Max-Age=${expiresIn / 1000}; SameSite=Lax; HttpOnly; ${isSecure}`,
+        `loggedIn=1; path=/; Max-Age=${expiresIn / 1000}; SameSite=Lax; ${isSecure}`
       ]
     )
     res.json({ message: 'success' })
