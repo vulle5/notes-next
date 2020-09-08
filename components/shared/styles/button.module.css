@@ -3,7 +3,6 @@
   padding: .5rem 1rem;
   outline: none;
   font-size: 1rem;
-  cursor: pointer;
   font-weight: bold;
   height: 40px;
 }
@@ -15,12 +14,17 @@
   background-color: rgb(0, 147, 242);
 }
 
-.filled:hover {
+.filled:hover:enabled {
   background-color: rgb(0, 147, 255);
   -webkit-box-shadow: 0px 0px 8px 3px rgba(0, 147, 255, .10);
   box-shadow: 0px 0px 8px 3px rgba(0, 147, 255, .10);
+  cursor: pointer;
 }
 
-.filled:active {
+.filled:active:enabled {
   background-color: rgb(0, 147, 242)
+}
+
+.filled:disabled {
+  background-color: rgb(122, 123, 123)
 }

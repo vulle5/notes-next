@@ -5,33 +5,20 @@ import fetch from 'services/fetch'
 const url = 'http://localhost:3000/api/auth'
 
 const login = async (email, password) => {
-  let error = null
-
   // Do not persist auth state on client side
   await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
-
-  try {
-    const { user } = await firebase.auth().signInWithEmailAndPassword(email, password)
-    const idToken = await user.getIdToken(true)
-    await fetch(`${url}/login`, { method: 'POST', body: { idToken } })
-    await firebase.auth().signOut()
-  } catch (err) {
-    error = err
-  }
-
-  return !error
+  // Try to login with email and password
+  const { user } = await firebase.auth().signInWithEmailAndPassword(email, password)
+  // Get token for user
+  const idToken = await user.getIdToken(true)
+  // Post that token to server for validation
+  await fetch(`${url}/login`, { method: 'POST', body: { idToken } })
+  // Sign out local user to prevent token theft
+  await firebase.auth().signOut()
 }
 
 const logout = async () => {
-  let error = null
-
   fetch(`${url}/logout`, { method: 'POST' })
-    .catch(err => {
-      // TODO: Show error
-      error = err
-    })
-
-  return !error
 }
 
 export default { login, logout }

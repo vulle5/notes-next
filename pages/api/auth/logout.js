@@ -15,8 +15,13 @@ export default async (req, res) => {
 
 const sessionLogout = async (req, res) => {
   const sessionCookie = req.cookies.session ?? ''
-  res.setHeader('set-cookie', 'session=; Max-Age=0')
-  res.setHeader('set-cookie', 'loggedIn=; Max-Age=0')
+  res.setHeader(
+    'Set-Cookie',
+    [
+      'session=; path=/; Max-Age=0;',
+      'loggedIn=; path=/; Max-Age=0;'
+    ]
+  )
 
   try {
     const decodedClaims = await auth().verifySessionCookie(sessionCookie)
