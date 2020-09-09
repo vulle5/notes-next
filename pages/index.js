@@ -28,10 +28,8 @@ export default function Home() {
           />
           <link rel="preload" href="/api/notes" as="fetch" crossOrigin="anonymous" />
         </Head>
-        <div className="f-center">
-          <h1 className="title">Quick brown fox jumped over the fence</h1>
-          <LogoutButton />
-        </div>
+        <h1 className="title">Quick brown fox jumped over the fence</h1>
+        <LogoutButton />
         <NoteBar />
         <NotesList />
         <style jsx>{`
