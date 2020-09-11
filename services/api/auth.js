@@ -43,7 +43,7 @@ const handleEmailAndPassword = async ({ email, password }) => {
 const handleGoogle = async ({ googleIdToken }) => {
   // Create firebase credentials with google id token
   const credential = firebase.auth.GoogleAuthProvider.credential(googleIdToken)
-  // Try to login to login to user
+  // Try to login to user
   const { user } = await firebase.auth().signInWithCredential(credential)
   // Get token for user
   return user.getIdToken(true)

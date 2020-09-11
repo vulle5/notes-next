@@ -7,7 +7,7 @@ const UserScript = () => (
   <InlineScript>
     {() => {
       (function (w, d) {
-        if (w.location.pathname !== '/login' && d.cookie.split(';').some(item => !item.includes('loggedIn=1'))) {
+        if (w.location.pathname !== '/login' && !d.cookie.split('; ').includes('loggedIn=1')) {
           w.location.href = '/login'
         }
       }(window, document))
