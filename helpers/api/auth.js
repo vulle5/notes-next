@@ -1,4 +1,4 @@
-import { auth } from 'firebase-admin'
+import { auth } from 'services/firebase'
 
 const verifyToken = async req => {
   const sessionCookie = req.cookies.session ?? ''

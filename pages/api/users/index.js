@@ -18,7 +18,7 @@ const create = async (req, res) => {
 
   if (email && password) {
     try {
-      const userDoc = await auth.createUser({
+      const userDoc = await auth().createUser({
         email,
         emailVerified: false,
         password,

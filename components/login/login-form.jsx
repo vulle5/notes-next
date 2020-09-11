@@ -15,7 +15,7 @@ const LoginForm = () => {
     e.preventDefault()
     setIsSubmitting(true)
     try {
-      await authService.login(email, password)
+      await authService.login('email', { email, password })
       setError(null)
       router.push('/')
     } catch (err) {
