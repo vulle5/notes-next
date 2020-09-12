@@ -15,7 +15,7 @@ const Design = () => (
     <h6>Quick brown fox jumped over the fence</h6>
     <TextInput id="email" name="email" label="Sähköposti" type="email" />
     <TextInput id="password" name="password" label="Salasana" type="password" />
-    <Link href="/">Rekisteröidy</Link>
+    <Link href="/"><a href="/">Rekisteröidy</a></Link>
     <Button>Kirjaudu sisään</Button>
     <h4 className="primary-text">Quick brown fox jumped over the fence</h4>
     <h4 className="secondary-text">Quick brown fox jumped over the fence</h4>

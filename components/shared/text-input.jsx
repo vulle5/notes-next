@@ -18,6 +18,7 @@ TextInput.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
+  stretch: PropTypes.bool,
   type: PropTypes.oneOf([
     'text',
     'email',
