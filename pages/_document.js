@@ -21,6 +21,10 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <UserScript />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Roboto:ital,wght@0,500;0,700;1,500;1,700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

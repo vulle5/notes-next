@@ -16,10 +16,11 @@
 
 .filled:hover:enabled {
   cursor: pointer;
+  filter: brightness(125%);
 }
 
 .filled:active:enabled {
-  background-color: rgb(40, 83, 202)
+  filter: brightness(100%);
 }
 
 .filled:disabled {
