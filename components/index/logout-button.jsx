@@ -13,10 +13,11 @@ const LogoutButton = () => {
 
   return (
     <Button
-      text="Logout"
       onClick={handleOnClick}
       style={{ position: 'absolute', top: '0.5rem', right: '1rem' }}
-    />
+    >
+      Logout
+    </Button>
   )
 }
 

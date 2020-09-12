@@ -39,7 +39,7 @@ const GoogleLogin = ({ clientId }) => {
     }
   }
 
-  return <Button text="Sign in with Google" onClick={signIn} />
+  return <Button onClick={signIn}>Sign in with Google</Button>
 }
 
 GoogleLogin.propTypes = {

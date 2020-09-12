@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 
 import styles from './styles/button.module.css'
 
-const Button = ({ text, ...buttonProps }) => (
-  <button className={styles.filled} type="button" {...buttonProps}>{text}</button>
+const Button = ({ children, ...buttonProps }) => (
+  <button className={styles.filled} type="button" {...buttonProps}>{children}</button>
 )
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired
 }
 
 export default Button

@@ -65,7 +65,7 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
         textareaRef={contentRef}
         type="text"
       />
-      {showContent && <Button text="CREATE" type="submit" />}
+      {showContent && <Button type="submit">Create</Button>}
       <style jsx>{`
         .wrapper {
           display: flex;

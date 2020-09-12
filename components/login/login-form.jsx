@@ -55,12 +55,9 @@ const LoginForm = () => {
           />
         </label>
       </section>
-      <Button
-        disabled={isSubmitting}
-        text="Sign in"
-        type="submit"
-        onClick={onSubmit}
-      />
+      <Button disabled={isSubmitting} type="submit" onClick={onSubmit}>
+        Sign in
+      </Button>
     </form>
   )
 }
