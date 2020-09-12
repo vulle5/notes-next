@@ -1,8 +1,13 @@
 .container {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   margin: 1rem 0;
+}
+.inputStretch {
+  composes: container;
+  display: flex;
+  align-items: unset;
 }
 .inputText {
   all: unset;
