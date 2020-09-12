@@ -17,6 +17,9 @@ const Design = () => (
     <TextInput id="password" name="password" label="Salasana" type="password" />
     <Link href="/">Rekisteröidy</Link>
     <Button>Kirjaudu sisään</Button>
+    <h4 className="primary-text">Quick brown fox jumped over the fence</h4>
+    <h4 className="secondary-text">Quick brown fox jumped over the fence</h4>
+    <h4 className="ternary-text">Quick brown fox jumped over the fence</h4>
   </Container>
 )
 

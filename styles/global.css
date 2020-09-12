@@ -1,4 +1,4 @@
-html,
+html { background-color: var(--theme-background); }
 body {
   padding: 0;
   margin: 0;
@@ -7,24 +7,12 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-}
-
-h1, h2, h3, h4, h5, h6, button {
-  font-family: 'Nunito', sans-serif;
-}
-
-a {
-  color: #2c69ed;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
 }
 
 @import './theme.css';
+@import './typography.css';
 
 .f-center {
   display: flex;
