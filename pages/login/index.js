@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Head from 'next/head'
 
 import GoogleLogin from 'components/login/google-login'
 import LoginForm from 'components/login/login-form'
@@ -16,9 +15,6 @@ export async function getStaticProps() {
 
 const Login = ({ googleClientId }) => (
   <Container>
-    <Head>
-      <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer />
-    </Head>
     <LoginForm />
     <GoogleLogin clientId={googleClientId} />
   </Container>

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import InlineScript from 'helpers/inlineScript'
+import InlineScript from '$shared/inline-script'
 
 // Check if user is logged in. If not go to login page
 const UserScript = () => (
