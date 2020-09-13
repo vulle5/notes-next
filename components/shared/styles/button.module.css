@@ -12,6 +12,7 @@
   border: 0;
   color: var(--theme-on-primary);
   background-color: var(--theme-primary);
+  transition: filter .25s ease-out;
 }
 
 .filled:hover:enabled {
@@ -20,6 +21,7 @@
 }
 
 .filled:active:enabled {
+  transition: filter 0s ease-out;
   filter: brightness(100%);
 }
 
