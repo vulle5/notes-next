@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Button from '$shared/button'
 import TextInput from '$shared/text-input'
 import Container from '$shared/container'
+import Card from '$shared/card'
 
 const Design = () => (
   <Container>
@@ -21,6 +22,8 @@ const Design = () => (
     <h4 className="primary-text">Quick brown fox jumped over the fence</h4>
     <h4 className="secondary-text">Quick brown fox jumped over the fence</h4>
     <h4 className="ternary-text">Quick brown fox jumped over the fence</h4>
+    <br />
+    <Card containerStyles={{ display: 'inline-flex' }}><h4>Some text inside a card</h4></Card>
   </Container>
 )
 
