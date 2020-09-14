@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Head from 'next/head'
 
 import GoogleLogin from 'components/login/google-login'
 import LoginForm from 'components/login/login-form'
@@ -16,6 +17,10 @@ export async function getStaticProps() {
 
 const Login = ({ googleClientId }) => (
   <Container>
+    <Head>
+      <title>Welcome back</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <div className="wrapper">
       <Card containerStyles={cardStyles}>
         <LoginForm />
