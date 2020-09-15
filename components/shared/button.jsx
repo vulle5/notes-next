@@ -10,15 +10,9 @@ const Button = ({ children, stretch, variant, ...buttonProps }) => (
     type="button"
     {...buttonProps}
   >
-    <div className="buttonContent">
+    <div className={styles.buttonContent}>
       {children}
     </div>
-    <style jsx>{`
-      .buttonContent {
-        display: inline-flex;
-      }
-    `}
-    </style>
   </button>
 )
 

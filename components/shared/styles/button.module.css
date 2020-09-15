@@ -7,6 +7,10 @@
   height: 40px;
 }
 
+.buttonContent {
+  display: inline-flex;
+}
+
 .filled {
   composes: buttonClass;
   border: 0;

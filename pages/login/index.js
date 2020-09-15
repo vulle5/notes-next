@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 import GoogleLogin from 'components/login/google-login'
+import GithubLogin from 'components/login/github-login'
 import LoginForm from 'components/login/login-form'
 import Container from '$shared/container'
 import Card from '$shared/card'
@@ -22,9 +23,10 @@ const Login = ({ googleClientId }) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <div className="wrapper">
-      <Card containerStyles={cardStyles}>
+      <Card>
         <LoginForm />
         <GoogleLogin clientId={googleClientId} />
+        <GithubLogin />
       </Card>
     </div>
     <style jsx>{`
@@ -38,10 +40,6 @@ const Login = ({ googleClientId }) => (
     </style>
   </Container>
 )
-
-const cardStyles = {
-  width: 400
-}
 
 Login.propTypes = {
   googleClientId: PropTypes.string.isRequired

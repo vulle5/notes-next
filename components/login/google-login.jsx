@@ -40,11 +40,9 @@ const GoogleLogin = ({ clientId }) => {
   }
 
   return (
-    <Button onClick={signIn} variant="outlined" stretch>
-      <>
-        <img height="20" src="/google-icon-color.svg" alt="logo" />
-        <span style={{ marginLeft: '1rem' }}>Sign in with Google</span>
-      </>
+    <Button onClick={signIn} variant="outlined">
+      <img height="20" src="/google-icon-color.svg" alt="logo" />
+      <span style={{ marginLeft: '1rem' }}>Sign in with Google</span>
     </Button>
   )
 }
