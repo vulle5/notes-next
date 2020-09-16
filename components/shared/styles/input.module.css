@@ -4,26 +4,31 @@
   align-items: flex-start;
   margin: 1rem 0;
 }
+
 .containerStretch {
   composes: container;
   display: flex;
   align-items: unset;
 }
+
 .inputText {
   all: unset;
   height: 28px;
   border-bottom: 2px solid rgb(220, 220, 220);
   transition: border-bottom-color .2s ease-out;
 }
+
 .inputText:focus:enabled {
   border-bottom: 2px solid var(--theme-primary);
 }
+
 .inputLabel {
   letter-spacing: -0.33px;
   font-size: 0.8rem;
   color: rgb(80, 80, 80);
   padding-bottom: 4px;
 }
+
 .inputText[type="password"] {
   letter-spacing: 1px;
 }
