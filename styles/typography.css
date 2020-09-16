@@ -17,6 +17,10 @@ a {
 .secondary-text {
   color: rgb(90, 90, 90);
 }
-.ternary-text {
-  color: rgb(140, 140, 140);
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

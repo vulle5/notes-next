@@ -1,11 +1,8 @@
 import React from 'react'
 
-import useMediaQuery from 'hooks/useMediaQuery'
 import Button from '$shared/button'
 
 const GithubLogin = () => {
-  const matches = useMediaQuery('(min-width: 600px)')
-
   const signIn = () => {
     console.log('This is github sign in')
   }
@@ -13,7 +10,19 @@ const GithubLogin = () => {
   return (
     <Button onClick={signIn} variant="outlined" style={{ marginLeft: '0.5rem' }}>
       <img height="20" src="/github-icon.svg" alt="logo" />
-      <span style={{ marginLeft: '1rem' }}>{matches ? 'Sign in with Github' : 'Sign in'}</span>
+      <span className="buttonText truncate-text">Sign in</span>
+      <style jsx>
+        {`
+          .buttonText {
+            margin-left: 1rem;
+          }
+          @media (min-width: 600px) {
+            .buttonText:after {
+              content: " with Github";
+            }
+          }
+        `}
+      </style>
     </Button>
   )
 }
