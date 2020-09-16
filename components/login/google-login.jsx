@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import authService from 'services/api/auth'
 import loadScript from 'helpers/loadScript'
 import removeScript from 'helpers/removeScript'
+import useMediaQuery from 'hooks/useMediaQuery'
 import Button from '$shared/button'
 
 const src = 'https://apis.google.com/js/client:platform.js'
@@ -12,6 +13,7 @@ const src = 'https://apis.google.com/js/client:platform.js'
 const GoogleLogin = ({ clientId }) => {
   const auth2 = useRef(null)
   const router = useRouter()
+  const matches = useMediaQuery('(min-width: 600px)')
 
   useEffect(() => {
     loadScript(document, 'script', 'google-login', src, () => {
@@ -42,7 +44,7 @@ const GoogleLogin = ({ clientId }) => {
   return (
     <Button onClick={signIn} variant="outlined">
       <img height="20" src="/google-icon-color.svg" alt="logo" />
-      <span style={{ marginLeft: '1rem' }}>Sign in with Google</span>
+      <span style={{ marginLeft: '1rem' }}>{matches ? 'Sign in with Google' : 'Sign in'}</span>
     </Button>
   )
 }
