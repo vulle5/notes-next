@@ -6,11 +6,11 @@ const defaultOptions = {
   body: {}
 }
 
-const fetcher = (url, options) => {
+const fetcher = (url, options = {}) => {
   const updatedOptions = { ...options }
 
   // Modify options
-  updatedOptions.body = JSON.stringify(options.body)
+  updatedOptions.body = options.body && JSON.stringify(options.body)
 
   return fetch(url, { ...defaultOptions, ...updatedOptions })
 }

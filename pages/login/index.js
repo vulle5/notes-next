@@ -12,12 +12,13 @@ import Card from '$shared/card'
 export async function getStaticProps() {
   return {
     props: {
+      githubClientId: process.env.GITHUB_CLIENT_ID,
       googleClientId: process.env.GOOGLE_CLIENT_ID
     }
   }
 }
 
-const Login = ({ googleClientId }) => {
+const Login = ({ githubClientId, googleClientId }) => {
   const matches = useMediaQuery('(min-width: 600px)')
 
   return (
@@ -31,7 +32,7 @@ const Login = ({ googleClientId }) => {
           <LoginForm />
           <div className="oauthButtonWrapper">
             <GoogleLogin clientId={googleClientId} />
-            <GithubLogin />
+            <GithubLogin clientId={githubClientId} />
           </div>
         </Card>
       </div>
@@ -53,6 +54,7 @@ const Login = ({ googleClientId }) => {
 }
 
 Login.propTypes = {
+  githubClientId: PropTypes.string.isRequired,
   googleClientId: PropTypes.string.isRequired
 }
 
