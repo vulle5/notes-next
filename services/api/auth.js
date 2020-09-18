@@ -1,5 +1,5 @@
 import firebase from 'services/firebase-client'
-import fetch from 'services/fetch'
+import Fetch from 'services/fetch'
 
 // TODO: Reference /api/auth
 const url = 'http://localhost:3000/api/auth'
@@ -21,16 +21,16 @@ const login = async (type, options) => {
   }
 
   if (idToken) {
-    await fetch(`${url}/login`, { method: 'POST', body: { idToken } })
-  } else {
-    throw new Error('Login failed unexpectedly')
+    try {
+      await Fetch.exec(`${url}/login`, { method: 'POST', body: { idToken } })
+    } catch (error) {
+      throw new Error('Login failed unexpectedly')
+    }
   }
-  // Sign out local user to prevent token theft
-  await firebase.auth().signOut()
 }
 
 const logout = async () => {
-  fetch(`${url}/logout`, { method: 'POST' })
+  Fetch.exec(`${url}/logout`, { method: 'POST' })
 }
 
 const handleEmailAndPassword = async ({ email, password }) => {

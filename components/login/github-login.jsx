@@ -7,25 +7,15 @@ import Button from '$shared/button'
 const GithubLogin = ({ clientId }) => {
   useEffect(() => {
     const channel = new BroadcastChannel('github-auth')
-    channel.addEventListener('message', event => {
-      console.log(event)
-    })
+    channel.onmessage = async ({ data: code }) => {
+      const res = await githubService.getAccessToken(clientId, code)
+      console.log(res)
+    }
 
     return () => channel.close()
-  }, [])
+  }, [clientId])
 
-  const signIn = async () => {
-    try {
-      // TODO: Find a way to communicate between tabs
-      // Maybe localStorage? It shares between tabs
-      // BroadcastChannel https://stackoverflow.com/questions/28230845/communication-between-tabs-or-windows
-      const code = githubService.authorize(clientId)
-      console.log(code)
-    } catch (err) {
-      // TODO: Show errors some how
-      console.log(err)
-    }
-  }
+  const signIn = () => githubService.authorize(clientId)
 
   return (
     <Button onClick={signIn} variant="outlined" style={{ marginLeft: '0.5rem' }}>
