@@ -6,8 +6,8 @@ import useMediaQuery from 'hooks/useMediaQuery'
 import GoogleLogin from 'components/login/google-login'
 import GithubLogin from 'components/login/github-login'
 import LoginForm from 'components/login/login-form'
-import Container from '$shared/container'
-import Card from '$shared/card'
+import Container from 'components/shared/container'
+import Card from 'components/shared/card'
 
 export async function getStaticProps() {
   return {
