@@ -1,18 +1,48 @@
 const defaultOptions = {
   method: 'GET',
   headers: {
+    Connection: 'keep-alive',
     'Content-Type': 'application/json'
   },
-  body: {}
+  body: '{}'
 }
 
-const fetcher = (url, options) => {
-  const updatedOptions = { ...options }
+class Fetch {
+  constructor(url, options) {
+    const { body, headers } = options
 
-  // Modify options
-  updatedOptions.body = JSON.stringify(options.body)
+    this.url = url
+    this.options = { ...defaultOptions, ...options }
+    this.options.body = body && JSON.stringify(options.body)
+    this.options.headers = { ...defaultOptions.headers, ...headers }
+  }
 
-  return fetch(url, { ...defaultOptions, ...updatedOptions })
+  static exec(url, options) {
+    const { body, headers } = options
+    const newOptions = { ...defaultOptions, ...options }
+    newOptions.body = body && JSON.stringify(options.body)
+    newOptions.headers = { ...defaultOptions.headers, ...headers }
+
+    return fetch(url, { ...defaultOptions, ...newOptions })
+  }
+
+  async json() {
+    try {
+      const res = await fetch(this.url, this.options)
+      return res.json()
+    } catch (err) {
+      return err
+    }
+  }
+
+  async text() {
+    try {
+      const res = await fetch(this.url, this.options)
+      return res.json()
+    } catch (err) {
+      return err
+    }
+  }
 }
 
-export default fetcher
+export default Fetch

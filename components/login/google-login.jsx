@@ -35,11 +35,28 @@ const GoogleLogin = ({ clientId }) => {
       await authService.login('google', { googleIdToken })
       router.push('/')
     } catch (err) {
-      // TODO: Show errors some how
+      // TODO: Show errors some how (ALSO IN GITHUB)
     }
   }
 
-  return <Button text="Sign in with Google" onClick={signIn} />
+  return (
+    <Button onClick={signIn} variant="outlined">
+      <img height="20" src="/google-icon-color.svg" alt="logo" />
+      <span className="buttonText truncate-text">Sign in</span>
+      <style jsx>
+        {`
+          .buttonText {
+            margin-left: 1rem;
+          }
+          @media (min-width: 600px) {
+            .buttonText:after {
+              content: " with Google";
+            }
+          }
+        `}
+      </style>
+    </Button>
+  )
 }
 
 GoogleLogin.propTypes = {

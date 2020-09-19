@@ -1,10 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './styles/container.module.css'
-
 const Container = ({ children }) => (
-  <div className={styles.container}>{children}</div>
+  <div className="container">
+    {children}
+    <style jsx>
+      {`
+      .container {
+          padding: 0 1rem;
+        }
+      `}
+    </style>
+  </div>
 )
 
 Container.propTypes = {

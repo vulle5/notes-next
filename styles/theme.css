@@ -1,0 +1,8 @@
+:root {
+  --theme-primary: #0f55eb;
+  --theme-secondary: #02c58a;
+  --theme-on-primary: #fff;
+  --theme-on-secondary: #fff;
+  --theme-background: #fefefe;
+  --theme-on-background: #000;
+}

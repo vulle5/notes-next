@@ -1,5 +1,5 @@
 .buttonClass {
-  border-radius: .5rem;
+  border-radius: 4px;
   padding: .5rem 1rem;
   outline: none;
   font-size: 1rem;
@@ -7,24 +7,60 @@
   height: 40px;
 }
 
+.buttonContent {
+  display: inline-flex;
+}
+
 .filled {
   composes: buttonClass;
   border: 0;
-  color: white;
-  background-color: rgb(0, 147, 242);
+  color: var(--theme-on-primary);
+  background-color: var(--theme-primary);
+  transition: filter .25s ease-out;
+}
+
+.outlined {
+  composes: buttonClass;
+  border: solid 1px #c8c8c8;
+  color: var(--theme-on-background);
+  background: rgba(200, 200, 200, 0);
+  transition: background .25s ease-out;
 }
 
 .filled:hover:enabled {
-  background-color: rgb(0, 147, 255);
-  -webkit-box-shadow: 0px 0px 8px 3px rgba(0, 147, 255, .10);
-  box-shadow: 0px 0px 8px 3px rgba(0, 147, 255, .10);
   cursor: pointer;
+  filter: brightness(125%);
 }
 
 .filled:active:enabled {
-  background-color: rgb(0, 147, 242)
+  transition: filter 0s ease-out;
+  filter: brightness(100%);
+}
+
+.filled:focus:enabled {
+  filter: brightness(125%);
 }
 
 .filled:disabled {
-  background-color: rgb(122, 123, 123)
+  cursor: default;
+  background-color: #c3cfe2
+}
+
+.outlined:hover:enabled {
+  cursor: pointer;
+  background: rgba(200, 200, 200, 0.25);
+}
+
+.outlined:active:enabled {
+  transition: background 0s ease-out;
+  background: rgba(200, 200, 200, 0.1);
+}
+
+.outlined:focus:enabled {
+  background: rgba(200, 200, 200, 0.25);
+}
+
+.outlined:disabled {
+  cursor: default;
+  color: #c3cfe2;
 }

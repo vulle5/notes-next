@@ -1,0 +1,26 @@
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Nunito', sans-serif;
+}
+
+a {
+  color: #2c69ed;
+  text-decoration: none;
+}
+
+.primary-text {
+  color: #000;
+}
+.secondary-text {
+  color: rgb(90, 90, 90);
+}
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
