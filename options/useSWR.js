@@ -11,24 +11,43 @@ const options = () => {
 }
 
 const defaultOptions = {
-  fetcher: (...args) => fetch(...args)
-    .then(res => {
-      if (res.status >= 200 && res.status <= 299) {
-        return res.json()
-      }
-      // If error throw it to let SWR know that an error occurred
-      return res.text().then(message => { throw Error(message) })
-    })
+  fetcher: async (...args) => {
+    const res = await fetch(...args)
+    // If the status code is not in the range 200-299,
+    // we still try to parse and throw it.
+    if (!res.ok) {
+      const error = new Error('An error occurred while fetching the data.')
+      // Attach extra info to the error object.
+      error.info = await res.json()
+      error.status = res.status
+      throw error
+    }
+
+    return res.json()
+  }
 }
 
 const devOptions = {
   ...defaultOptions,
   revalidateOnFocus: false,
-  shouldRetryOnError: false
+  shouldRetryOnError: false,
+  onError: (error, key) => {
+    if (error.status !== 403 && error.status !== 404) {
+      console.error(`An error occurred in useSwr hook with key ${key}`, error)
+    } else {
+      console.error(`Unexpected error occurred in useSwr hook with key ${key}`, error)
+    }
+  }
 }
 
 const prodOptions = {
-  ...defaultOptions
+  ...defaultOptions,
+  onError: (error, key) => {
+    if (error.status !== 403 && error.status !== 404) {
+      // We can send the error to Sentry,
+      // or show a notification UI.
+    }
+  }
 }
 
 export default options
