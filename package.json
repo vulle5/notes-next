@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "lint": "eslint"
+    "lint": "eslint ./**/*.{js,jsx} --ignore-path .gitignore"
   },
   "dependencies": {
     "firebase": "^7.19.0",

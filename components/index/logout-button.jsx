@@ -5,7 +5,7 @@ import authService from 'services/api/auth'
 import Button from 'components/shared/button'
 
 const LogoutButton = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleOnClick = () => {
     authService.logout().then(() => router.replace('/login'))
