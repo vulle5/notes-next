@@ -3,8 +3,13 @@
 exports[`should render button with text 1`] = `
 <button
   class="filled"
+  style="width: auto;"
   type="button"
 >
-  test text
+  <div
+    class="buttonContent"
+  >
+    test text
+  </div>
 </button>
 `;

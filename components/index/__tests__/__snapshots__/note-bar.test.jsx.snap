@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a note-bar component 1`] = `
+<div
+  class="jsx-4019227191 container"
+>
+  <div>
+    <form
+      class="jsx-3726941156 wrapper"
+    >
+      <textarea
+        class="jsx-1612382694 "
+        id="note-content"
+        name="note-content"
+        placeholder="Remind me to..."
+        rows="1"
+        type="text"
+      />
+    </form>
+  </div>
+</div>
+`;
