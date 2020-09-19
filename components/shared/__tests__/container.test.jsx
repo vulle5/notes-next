@@ -13,7 +13,7 @@ test('should render children', () => {
   const { container } = render(element)
   expect(container.firstChild).toMatchInlineSnapshot(`
     <div
-      class="container"
+      class="jsx-1947188201 container"
     >
       <p>
         Hello World!

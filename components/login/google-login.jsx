@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import authService from 'services/api/auth'
 import loadScript from 'helpers/loadScript'
 import removeScript from 'helpers/removeScript'
-import Button from '$shared/button'
+import Button from 'components/shared/button'
 
 const src = 'https://apis.google.com/js/client:platform.js'
 

@@ -33,8 +33,10 @@ const devOptions = {
   shouldRetryOnError: false,
   onError: (error, key) => {
     if (error.status !== 403 && error.status !== 404) {
+      // eslint-disable-next-line no-console
       console.error(`An error occurred in useSwr hook with key ${key}`, error)
     } else {
+      // eslint-disable-next-line no-console
       console.error(`Unexpected error occurred in useSwr hook with key ${key}`, error)
     }
   }
@@ -42,7 +44,7 @@ const devOptions = {
 
 const prodOptions = {
   ...defaultOptions,
-  onError: (error, key) => {
+  onError: error => {
     if (error.status !== 403 && error.status !== 404) {
       // We can send the error to Sentry,
       // or show a notification UI.

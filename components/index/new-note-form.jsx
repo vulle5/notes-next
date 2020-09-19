@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import useNotes from 'hooks/useNotes'
 import notesService from 'services/api/notes'
-import ResizableTextarea from '$shared/resizable-textarea'
-import Button from '$shared/button'
+import ResizableTextarea from 'components/shared/resizable-textarea'
+import Button from 'components/shared/button'
 
 const NewNoteForm = ({ showContent, setShowContent }) => {
   const { data, mutate } = useNotes()

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 
 import authService from 'services/api/auth'
-import Button from '$shared/button'
+import Button from 'components/shared/button'
 
 const GithubLogin = ({ clientId }) => {
   const router = useRouter()
