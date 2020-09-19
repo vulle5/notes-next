@@ -13,7 +13,7 @@ const useMediaQuery = mediaQuery => {
 
     mediaQueryList.addEventListener('change', e => onEvent(e))
 
-    return () => mediaQueryList.removeEventListener('change', onEvent)
+    return () => mediaQueryList.removeEventListener('change', e => onEvent(e))
   }, [mediaQuery])
 
   return value

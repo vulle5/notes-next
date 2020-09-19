@@ -35,7 +35,7 @@ const GoogleLogin = ({ clientId }) => {
       await authService.login('google', { googleIdToken })
       router.push('/')
     } catch (err) {
-      // TODO: Show errors some how
+      // TODO: Show errors some how (ALSO IN GITHUB)
     }
   }
 
