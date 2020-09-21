@@ -8,20 +8,17 @@ const defaultOptions = {
 }
 
 class Fetch {
-  constructor(url, options) {
-    const { body, headers } = options
-
+  constructor(url, options = {}) {
     this.url = url
     this.options = { ...defaultOptions, ...options }
-    this.options.body = body && JSON.stringify(options.body)
-    this.options.headers = { ...defaultOptions.headers, ...headers }
+    if (options.body) this.options.body = JSON.stringify(options.body)
+    if (options.headers) this.options.headers = { ...defaultOptions.headers, ...options.headers }
   }
 
-  static exec(url, options) {
-    const { body, headers } = options
+  static exec(url, options = {}) {
     const newOptions = { ...defaultOptions, ...options }
-    newOptions.body = body && JSON.stringify(options.body)
-    newOptions.headers = { ...defaultOptions.headers, ...headers }
+    if (options.body) newOptions.body = JSON.stringify(options.body)
+    if (options.headers) newOptions.headers = { ...defaultOptions.headers, ...options.headers }
 
     return fetch(url, { ...defaultOptions, ...newOptions })
   }
@@ -38,7 +35,7 @@ class Fetch {
   async text() {
     try {
       const res = await fetch(this.url, this.options)
-      return res.json()
+      return res.text()
     } catch (err) {
       return err
     }
