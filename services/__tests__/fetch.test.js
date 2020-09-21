@@ -5,6 +5,26 @@ const data = {
   2: { name: 'Archie' }
 }
 
+describe('constructor', () => {
+  test('handles default options', () => {
+    const fetcher = new Fetch('test.com')
+    expect(fetcher.options).toEqual({
+      method: 'GET',
+      headers: { Connection: 'keep-alive', 'Content-Type': 'application/json' },
+      body: '{}'
+    })
+  })
+
+  test('handles custom options', () => {
+    const fetcher = new Fetch('test.com', { method: 'POST', headers: { Accept: 'application/json' }, body: { 1: { name: 'test' } } })
+    expect(fetcher.options).toEqual({
+      method: 'POST',
+      headers: { Accept: 'application/json', Connection: 'keep-alive', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 1: { name: 'test' } })
+    })
+  })
+})
+
 describe('static method', () => {
   global.fetch = jest.fn().mockResolvedValue(data)
 
