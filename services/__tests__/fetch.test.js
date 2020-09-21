@@ -8,6 +8,7 @@ const data = {
 describe('constructor', () => {
   test('handles default options', () => {
     const fetcher = new Fetch('test.com')
+    expect(fetcher.url).toEqual('test.com')
     expect(fetcher.options).toEqual({
       method: 'GET',
       headers: { Connection: 'keep-alive', 'Content-Type': 'application/json' },
