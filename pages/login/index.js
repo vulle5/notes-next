@@ -29,10 +29,12 @@ const Login = ({ githubClientId, googleClientId }) => {
       </Head>
       <div className="wrapper">
         <Card containerStyles={{ width: matches ? 'auto' : 420 }}>
-          <LoginForm />
-          <div className="oauthButtonWrapper">
-            <GoogleLogin clientId={googleClientId} />
-            <GithubLogin clientId={githubClientId} />
+          <div className="card-wrapper">
+            <LoginForm />
+            <div className="oauthButtonWrapper">
+              <GoogleLogin clientId={googleClientId} />
+              <GithubLogin clientId={githubClientId} />
+            </div>
           </div>
         </Card>
       </div>
@@ -42,6 +44,9 @@ const Login = ({ githubClientId, googleClientId }) => {
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+        .card-wrapper {
+          padding: 1rem;
         }
         .oauthButtonWrapper {
           display: flex;
