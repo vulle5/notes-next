@@ -2,23 +2,33 @@
 
 exports[`should not crash without data 1`] = `
 <div
-  class="jsx-2449387748 container"
-/>
+  class="shadow-small"
+  style="margin: 0.5rem;"
+>
+  <div
+    class="jsx-4215553481 container"
+  />
+</div>
 `;
 
 exports[`should render a note component 1`] = `
 <div
-  class="jsx-2503106702 container"
+  class="shadow-small"
+  style="margin: 0.5rem;"
 >
-  <h4
-    class="jsx-2503106702 title"
+  <div
+    class="jsx-4215553481 container"
   >
-    note title
-  </h4>
-  <p
-    class="jsx-2503106702"
-  >
-    note content
-  </p>
+    <h4
+      class="jsx-4215553481 title"
+    >
+      note title
+    </h4>
+    <p
+      class="jsx-4215553481"
+    >
+      note content
+    </p>
+  </div>
 </div>
 `;

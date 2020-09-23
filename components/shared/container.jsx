@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Container = ({ children }) => (
-  <div className="container">
+  <main className="container">
     {children}
     <style jsx>
       {`
@@ -11,7 +11,7 @@ const Container = ({ children }) => (
         }
       `}
     </style>
-  </div>
+  </main>
 )
 
 Container.propTypes = {

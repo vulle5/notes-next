@@ -12,12 +12,12 @@ const element = (
 test('should render children', () => {
   const { container } = render(element)
   expect(container.firstChild).toMatchInlineSnapshot(`
-    <div
+    <main
       class="jsx-1947188201 container"
     >
       <p>
         Hello World!
       </p>
-    </div>
+    </main>
   `)
 })
