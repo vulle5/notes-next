@@ -32,13 +32,13 @@
   filter: brightness(125%);
 }
 
+.filled:focus:enabled {
+  filter: brightness(125%);
+}
+
 .filled:active:enabled {
   transition: filter 0s ease-out;
   filter: brightness(100%);
-}
-
-.filled:focus:enabled {
-  filter: brightness(125%);
 }
 
 .filled:disabled {
@@ -51,13 +51,13 @@
   background: rgba(200, 200, 200, 0.25);
 }
 
+.outlined:focus:enabled {
+  background: rgba(200, 200, 200, 0.25);
+}
+
 .outlined:active:enabled {
   transition: background 0s ease-out;
   background: rgba(200, 200, 200, 0.1);
-}
-
-.outlined:focus:enabled {
-  background: rgba(200, 200, 200, 0.25);
 }
 
 .outlined:disabled {

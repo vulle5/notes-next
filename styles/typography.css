@@ -11,6 +11,14 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  outline-color: #2c69ed;
+}
+
 .primary-text {
   color: #000;
 }

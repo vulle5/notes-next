@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import styles from './styles/button.module.css'
 
-const Button = ({ children, stretch, variant, ...buttonProps }) => (
+const Button = ({ children, stretch, style, variant, ...buttonProps }) => (
   <button
     className={styles[variant]}
-    style={{ width: stretch ? '100%' : 'auto' }}
+    style={{ ...style, width: stretch ? '100%' : 'auto' }}
     type="button"
     {...buttonProps}
   >
@@ -23,6 +23,7 @@ Button.defaultProps = {
 Button.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   stretch: PropTypes.bool,
+  style: PropTypes.shape({}),
   variant: PropTypes.oneOf(['filled', 'outlined'])
 }
 
