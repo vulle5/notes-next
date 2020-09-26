@@ -44,7 +44,8 @@ module.exports = {
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
     // Accessability
-    'jsx-a11y/no-autofocus': 'off'
+    'jsx-a11y/no-autofocus': 'off',
+    'jsx-a11y/anchor-is-valid': 'off'
   },
   settings: {
     'import/resolver': {

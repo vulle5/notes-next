@@ -2,28 +2,28 @@
 
 exports[`should render a register form 1`] = `
 <form
-  class="jsx-2161184292 loginForm"
+  class="jsx-253314625"
 >
   <div
-    class="jsx-2161184292 heading"
+    class="jsx-253314625 heading"
   >
     <h1
-      class="jsx-2161184292"
+      class="jsx-253314625"
     >
       Nice to meet you
     </h1>
     <p
-      class="jsx-2161184292 secondary-text"
+      class="jsx-253314625 secondary-text"
     >
       Register an account to access notes-next
     </p>
     <p
-      class="jsx-2161184292"
+      class="jsx-253314625"
       style="color: red;"
     />
   </div>
   <section
-    class="jsx-2161184292"
+    class="jsx-253314625"
   >
     <div
       class="containerStretch"
@@ -45,7 +45,7 @@ exports[`should render a register form 1`] = `
     </div>
   </section>
   <section
-    class="jsx-2161184292"
+    class="jsx-253314625"
   >
     <div
       class="containerStretch"
@@ -67,7 +67,7 @@ exports[`should render a register form 1`] = `
     </div>
   </section>
   <section
-    class="jsx-2161184292"
+    class="jsx-253314625"
   >
     <div
       class="containerStretch"

@@ -28,7 +28,7 @@ const LoginForm = () => {
 
   // TODO: Use formik for forms
   return (
-    <form className="loginForm">
+    <form>
       <div className="heading">
         <h1>Welcome back</h1>
         <p className="secondary-text">Sign in to access notes-next</p>
@@ -60,7 +60,7 @@ const LoginForm = () => {
         />
       </section>
       <div className="forgotLink">
-        <Link href="/login"><a href="/login">Forgot your password?</a></Link>
+        <Link href="/login"><a>Forgot your password?</a></Link>
       </div>
       <Button disabled={isSubmitting} type="submit" onClick={onSubmit} stretch>
         Sign in
@@ -73,9 +73,6 @@ const LoginForm = () => {
         .forgotLink {
           text-align: right;
           margin-bottom: 2rem;
-        }
-        .loginForm {
-          margin-bottom: 1rem;
         }
       `}
       </style>

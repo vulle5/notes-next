@@ -34,7 +34,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <form className="loginForm">
+    <form>
       <div className="heading">
         <h1>Nice to meet you</h1>
         <p className="secondary-text">Register an account to access notes-next</p>
@@ -84,9 +84,6 @@ const RegisterForm = () => {
         .heading {
           text-align: center;
           margin-bottom: 2rem;
-        }
-        .loginForm {
-          margin-bottom: 1rem;
         }
       `}
       </style>
