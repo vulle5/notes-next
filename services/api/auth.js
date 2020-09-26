@@ -20,7 +20,7 @@ const login = async (type, options) => {
       idToken = await handleGithub(options)
       break
     default:
-      throw new Error('Unknown login type expected one of ["email", "google"]')
+      throw new Error('Unknown login type expected one of ["email", "google", "github"]')
   }
 
   if (idToken) {

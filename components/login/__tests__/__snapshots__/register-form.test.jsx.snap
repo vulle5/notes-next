@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a register form 1`] = `
+<form
+  class="jsx-2161184292 loginForm"
+>
+  <div
+    class="jsx-2161184292 heading"
+  >
+    <h1
+      class="jsx-2161184292"
+    >
+      Nice to meet you
+    </h1>
+    <p
+      class="jsx-2161184292 secondary-text"
+    >
+      Register an account to access notes-next
+    </p>
+    <p
+      class="jsx-2161184292"
+      style="color: red;"
+    />
+  </div>
+  <section
+    class="jsx-2161184292"
+  >
+    <div
+      class="containerStretch"
+    >
+      <label
+        class="inputLabel"
+        for="email"
+      >
+        Email address
+      </label>
+      <input
+        autocomplete="email"
+        class="inputText"
+        id="email"
+        name="email"
+        type="email"
+        value=""
+      />
+    </div>
+  </section>
+  <section
+    class="jsx-2161184292"
+  >
+    <div
+      class="containerStretch"
+    >
+      <label
+        class="inputLabel"
+        for="newPass"
+      >
+        Password
+      </label>
+      <input
+        autocomplete="password"
+        class="inputText"
+        id="newPass"
+        name="newPass"
+        type="password"
+        value=""
+      />
+    </div>
+  </section>
+  <section
+    class="jsx-2161184292"
+  >
+    <div
+      class="containerStretch"
+    >
+      <label
+        class="inputLabel"
+        for="passAgain"
+      >
+        Confirm password
+      </label>
+      <input
+        autocomplete="password"
+        class="inputText"
+        id="passAgain"
+        name="passAgain"
+        type="password"
+        value=""
+      />
+    </div>
+  </section>
+  <button
+    class="filled"
+    style="width: 100%;"
+    type="submit"
+  >
+    <div
+      class="buttonContent"
+    >
+      Register
+    </div>
+  </button>
+</form>
+`;

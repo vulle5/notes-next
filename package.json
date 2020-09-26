@@ -20,6 +20,7 @@
     "swr": "^0.3.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.3.0",
     "babel-eslint": "^9.0.0",
     "eslint": "7.6.0",
@@ -41,9 +42,13 @@
     }
   },
   "jest": {
+    "setupFilesAfterEnv": ["<rootDir>/testing/jest.setup.js"],
     "moduleNameMapper": {
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
     },
-    "moduleDirectories": ["node_modules", "."]
+    "moduleDirectories": [
+      "node_modules",
+      "."
+    ]
   }
 }

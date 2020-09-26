@@ -31,7 +31,7 @@ const create = async (req, res) => {
         displayName: userDoc.displayName
       })
     } catch (error) {
-      res.status(400).json({ message: 'There was an error while creating a user', error })
+      res.status(400).json(error)
     }
   } else {
     res.status(400).json({ message: 'Email and password are required' })

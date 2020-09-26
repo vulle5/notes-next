@@ -7,6 +7,11 @@ const defaultOptions = {
   body: '{}'
 }
 
+const handleError = async res => {
+  const error = await res.json()
+  throw error
+}
+
 class Fetch {
   constructor(url, options = {}) {
     this.url = url
@@ -15,30 +20,29 @@ class Fetch {
     if (options.headers) this.options.headers = { ...defaultOptions.headers, ...options.headers }
   }
 
-  static exec(url, options = {}) {
+  static async exec(url, options = {}) {
     const newOptions = { ...defaultOptions, ...options }
     if (options.body) newOptions.body = JSON.stringify(options.body)
     if (options.headers) newOptions.headers = { ...defaultOptions.headers, ...options.headers }
 
-    return fetch(url, { ...defaultOptions, ...newOptions })
+    const res = await fetch(url, { ...defaultOptions, ...newOptions })
+    if (!res.ok) return handleError(res)
+
+    return res
   }
 
   async json() {
-    try {
-      const res = await fetch(this.url, this.options)
-      return res.json()
-    } catch (err) {
-      return err
-    }
+    const res = await fetch(this.url, this.options)
+    if (!res.ok) await handleError(res)
+
+    return res.json()
   }
 
   async text() {
-    try {
-      const res = await fetch(this.url, this.options)
-      return res.text()
-    } catch (err) {
-      return err
-    }
+    const res = await fetch(this.url, this.options)
+    if (!res.ok) await handleError(res)
+
+    return res.text()
   }
 }
 

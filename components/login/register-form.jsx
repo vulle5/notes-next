@@ -1,22 +1,29 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 import authService from 'services/api/auth'
+import userService from 'services/api/user'
 import Button from 'components/shared/button'
 import Input from 'components/shared/text-input'
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState(null)
+  const [passwordAgain, setPasswordAgain] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState(null)
   const router = useRouter()
 
   const onSubmit = async e => {
     e.preventDefault()
+    if (password !== passwordAgain) {
+      setError('Passwords are not equal')
+      return
+    }
+
     setIsSubmitting(true)
     try {
+      await userService.create({ email, password })
       await authService.login('email', { email, password })
       setError(null)
       router.push('/')
@@ -26,12 +33,11 @@ const LoginForm = () => {
     }
   }
 
-  // TODO: Use formik for forms
   return (
     <form className="loginForm">
       <div className="heading">
-        <h1>Welcome back</h1>
-        <p className="secondary-text">Sign in to access notes-next</p>
+        <h1>Nice to meet you</h1>
+        <p className="secondary-text">Register an account to access notes-next</p>
         <p style={{ color: 'red' }}>{error}</p>
       </div>
       <section>
@@ -50,8 +56,8 @@ const LoginForm = () => {
       <section>
         <Input
           autoComplete="password"
-          id="pass"
-          name="pass"
+          id="newPass"
+          name="newPass"
           label="Password"
           onChange={e => setPassword(e.target.value)}
           stretch
@@ -59,19 +65,24 @@ const LoginForm = () => {
           value={password}
         />
       </section>
-      <div className="forgotLink">
-        <Link href="/login"><a href="/login">Forgot your password?</a></Link>
-      </div>
+      <section>
+        <Input
+          autoComplete="password"
+          id="passAgain"
+          name="passAgain"
+          label="Confirm password"
+          onChange={e => setPasswordAgain(e.target.value)}
+          stretch
+          type="password"
+          value={passwordAgain}
+        />
+      </section>
       <Button disabled={isSubmitting} type="submit" onClick={onSubmit} stretch>
-        Sign in
+        Register
       </Button>
       <style jsx>{`
         .heading {
           text-align: center;
-          margin-bottom: 2rem;
-        }
-        .forgotLink {
-          text-align: right;
           margin-bottom: 2rem;
         }
         .loginForm {
@@ -83,4 +94,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default RegisterForm

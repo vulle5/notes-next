@@ -4,6 +4,17 @@ const data = {
   1: { name: 'Jesse' },
   2: { name: 'Archie' }
 }
+const error = {
+  message: 'Bad things happened'
+}
+
+const json = jest.fn(() => Promise.resolve(data))
+const text = jest.fn(() => Promise.resolve(data))
+const methods = {
+  ok: true,
+  json,
+  text
+}
 
 describe('constructor', () => {
   test('handles default options', () => {
@@ -27,7 +38,7 @@ describe('constructor', () => {
 })
 
 describe('static method', () => {
-  global.fetch = jest.fn().mockResolvedValue(data)
+  global.fetch = jest.fn().mockResolvedValue(methods)
 
   beforeEach(() => {
     fetch.mockClear()
@@ -60,13 +71,12 @@ describe('static method', () => {
 
 describe('class method', () => {
   let fetcher
-  const json = jest.fn(() => Promise.resolve(data))
-  const text = jest.fn(() => Promise.resolve(data))
+  const errorJson = jest.fn(() => Promise.resolve(error))
 
   beforeEach(() => {
     fetch.mockReset()
     fetcher = new Fetch('test.com')
-    global.fetch = jest.fn(() => Promise.resolve({ json, text }))
+    global.fetch = jest.fn().mockResolvedValue(methods)
   })
 
   test('json() returns data from fetch json function', async () => {
@@ -77,12 +87,10 @@ describe('class method', () => {
   })
 
   test('json() catches and returns the error', async () => {
-    const rejection = Promise.reject(new Error('error'))
-    global.fetch = jest.fn(() => rejection)
-    const response = await fetcher.json()
+    global.fetch = jest.fn().mockResolvedValue({ ...methods, json: errorJson, ok: false })
 
+    await expect(fetcher.json()).rejects.toEqual({ message: 'Bad things happened' })
     expect(json).toHaveBeenCalledTimes(1)
-    expect(response).toEqual(Error('error'))
   })
 
   test('text() returns data from fetch text function', async () => {
@@ -93,11 +101,9 @@ describe('class method', () => {
   })
 
   test('text() catches and returns the error', async () => {
-    const rejection = Promise.reject(new Error('error'))
-    global.fetch = jest.fn(() => rejection)
-    const response = await fetcher.text()
+    global.fetch = jest.fn().mockResolvedValue({ ...methods, json: errorJson, ok: false })
 
+    await expect(fetcher.text()).rejects.toEqual({ message: 'Bad things happened' })
     expect(text).toHaveBeenCalledTimes(1)
-    expect(response).toEqual(Error('error'))
   })
 })
