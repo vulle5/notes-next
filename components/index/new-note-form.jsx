@@ -16,7 +16,7 @@ const NewNoteForm = ({ showContent, setShowContent }) => {
 
     const newNote = {
       // Set id so react does not warn about keys in an array
-      id: data?.length?.toString() ?? '1',
+      id: Date.now().toString(),
       title: titleRef?.current?.value,
       content: contentRef?.current?.value
     }
