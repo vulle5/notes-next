@@ -9,7 +9,7 @@ const Note = ({ note }) => (
   >
     <div className="container">
       {note.title && <h4 className="title">{note.title}</h4>}
-      {note.content && <p>{note.content}</p>}
+      {note.content && <p className="content">{note.content}</p>}
       <style jsx>{`
         .container {
           display: flex;
@@ -22,6 +22,9 @@ const Note = ({ note }) => (
           color: red;
           margin-bottom: 0.5rem;
           width: 100%;
+        }
+        .content {
+          color: black;
         }
       `}
       </style>

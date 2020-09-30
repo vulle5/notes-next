@@ -27,18 +27,18 @@ export default async (req, res) => {
 }
 
 const index = async (req, res) => {
-  const notes = []
+  const notes = {}
 
   try {
     const collectionRef = await db.collection('notes').where('uid', '==', req.userToken.uid).orderBy('createdAt', 'desc').get()
     collectionRef.forEach(doc => {
       const { createdAt, updatedAt, ...rest } = doc.data()
-      notes.push({
+      notes[doc.id] = {
         id: doc.id,
         createdAt: createdAt.toDate(),
         updatedAt: updatedAt.toDate(),
         ...rest
-      })
+      }
     })
     res.status(200).json(notes)
   } catch (err) {

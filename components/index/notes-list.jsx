@@ -1,10 +1,12 @@
 import React from 'react'
-import useNotes from 'hooks/useNotes'
+import Link from 'next/link'
 
+import useNotes from 'hooks/useNotes'
 import Note from './note'
 
 const NotesList = () => {
-  const { data: notes, isLoading, isError } = useNotes()
+  const { data, isLoading, isError } = useNotes()
+  const notes = Object.values(data)
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Unexpected error</div>
@@ -12,7 +14,11 @@ const NotesList = () => {
 
   return (
     <div className="container">
-      {notes.map(note => <Note key={note.id} note={note} />)}
+      {notes.map(note => (
+        <Link key={note.id} href={`/notes/${encodeURIComponent(note.id)}`}>
+          <a style={{ textDecoration: 'none' }}><Note note={note} /></a>
+        </Link>
+      ))}
       <style jsx>{`
         .container {
           display: flex;
