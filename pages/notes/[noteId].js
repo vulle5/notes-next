@@ -8,7 +8,12 @@ const Note = () => {
   const { noteId } = router.query
   const { data } = useNotes({ revalidateOnMount: false })
 
-  // TODO: If below does not exist fetch single note from the server
+  // TODO:
+  // 1: Revert back to array from server
+  // 2: Show note in modal if clicked in index
+  // 3: If page is reloaded show new page where
+  // there is a link to all notes (reuse form)
+  // 4: Think about updating the value with useSwr
   console.log(data[noteId])
 
   return (
