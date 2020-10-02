@@ -5,8 +5,7 @@ import useNotes from 'hooks/useNotes'
 import Note from './note'
 
 const NotesList = () => {
-  const { data, isLoading, isError } = useNotes()
-  const notes = Object.values(data)
+  const { data: notes, isLoading, isError } = useNotes()
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Unexpected error</div>
