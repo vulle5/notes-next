@@ -1,11 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRecoilState } from 'recoil'
 
+import { selectedNote } from 'recoil/note'
 import useNotes from 'hooks/useNotes'
 import Note from './note'
 
 const NotesList = () => {
-  const { data: notes, isLoading, isError } = useNotes()
+  const [_, setSelectedNote] = useRecoilState(selectedNote)
+  const { data, isLoading, isError } = useNotes()
+  const notes = Object.values(data)
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Unexpected error</div>
@@ -19,7 +23,14 @@ const NotesList = () => {
           href={`/?noteId=${encodeURIComponent(note.id)}`}
           as={`/notes/${encodeURIComponent(note.id)}`}
         >
-          <a style={{ textDecoration: 'none' }}><Note note={note} /></a>
+          <a
+            aria-hidden="true"
+            role="link"
+            onClick={() => setSelectedNote(note)}
+            style={{ textDecoration: 'none' }}
+          >
+            <Note note={note} />
+          </a>
         </Link>
       ))}
       <style jsx>{`
