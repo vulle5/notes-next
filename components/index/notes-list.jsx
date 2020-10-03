@@ -14,7 +14,11 @@ const NotesList = () => {
   return (
     <div className="container">
       {notes.map(note => (
-        <Link key={note.id} href={`/notes/${encodeURIComponent(note.id)}`}>
+        <Link
+          key={note.id}
+          href={`/?noteId=${encodeURIComponent(note.id)}`}
+          as={`/notes/${encodeURIComponent(note.id)}`}
+        >
           <a style={{ textDecoration: 'none' }}><Note note={note} /></a>
         </Link>
       ))}
