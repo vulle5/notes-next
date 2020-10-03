@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 
 import { selectedNote } from 'recoil/note'
 import Button from 'components/shared/button'
 import ResizableTextarea from 'components/shared/resizable-textarea'
 
 const NoteForm = () => {
-  const [note] = useRecoilState(selectedNote)
+  const note = useRecoilValue(selectedNote)
   const titleRef = useRef(null)
   const contentRef = useRef(null)
 

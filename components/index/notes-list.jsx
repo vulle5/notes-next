@@ -1,13 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 import { selectedNote } from 'recoil/note'
 import useNotes from 'hooks/useNotes'
 import Note from './note'
 
 const NotesList = () => {
-  const [_, setSelectedNote] = useRecoilState(selectedNote)
+  const setSelectedNote = useSetRecoilState(selectedNote)
   const { data, isLoading, isError } = useNotes()
   const notes = Object.values(data)
 
