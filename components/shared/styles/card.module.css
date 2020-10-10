@@ -1,6 +1,11 @@
 .container {
   border: solid 1px #e1e1e1;
   border-radius: 8px;
+  background-color: var(--theme-background);
+}
+
+.shadow-none {
+  composes: container;
 }
 
 .shadow-small {

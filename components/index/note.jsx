@@ -5,7 +5,7 @@ import Card from 'components/shared/card'
 const Note = ({ note }) => (
   <Card
     containerStyles={{ margin: '0.5rem' }}
-    shadowSize="small"
+    shadow="small"
   >
     <div className="container">
       {note.title && <h4 className="title">{note.title}</h4>}

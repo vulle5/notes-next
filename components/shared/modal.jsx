@@ -22,7 +22,7 @@ const Modal = ({ children, isOpen, onRequestClose }) => {
         isOpen={isOpen}
         onRequestClose={onModalClose}
         onAfterOpen={onModalOpen}
-        style={{ overlay: { backgroundColor: 'unset' } }}
+        style={styles.modal}
       >
         {children}
       </ReactModal>
@@ -31,7 +31,24 @@ const Modal = ({ children, isOpen, onRequestClose }) => {
 }
 
 const styles = {
-  modalOpen: 'filter: blur(8px); transition: filter .5s cubic-bezier(0.15, 1, 0.75, 1);'
+  modalOpen: 'filter: blur(8px); transition: filter .4s cubic-bezier(0.15, 1, 0.75, 1);',
+  modal: {
+    overlay: {
+      backgroundColor: 'unset'
+    },
+    content: {
+      position: 'relative',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      maxWidth: 500,
+      padding: 0,
+      border: 'transparent',
+      background: 'none',
+      margin: '0.5rem'
+    }
+  }
 }
 
 Modal.propTypes = {

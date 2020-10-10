@@ -5,6 +5,7 @@ import { selectedNote } from 'recoil/note'
 import Button from 'components/shared/button'
 import ResizableTextarea from 'components/shared/resizable-textarea'
 
+// TODO: Fix form submission
 const NoteForm = () => {
   const note = useRecoilValue(selectedNote)
   const titleRef = useRef(null)
@@ -40,7 +41,7 @@ const NoteForm = () => {
         textareaRef={contentRef}
         type="text"
       />
-      <Button type="submit">Create</Button>
+      <Button type="submit">Add proper title</Button>
       <style jsx>{`
         .wrapper {
           display: flex;

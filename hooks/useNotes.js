@@ -6,7 +6,7 @@ const useNotes = swrOptions => {
 
   return {
     data,
-    isLoading: !error && !Object.keys(data).length,
+    isLoading: !error && !data,
     isError: error,
     ...rest
   }
