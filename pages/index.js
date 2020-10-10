@@ -1,14 +1,12 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Modal from 'react-modal'
 
 import Container from 'components/shared/container'
 import LogoutButton from 'components/index/logout-button'
 import NoteBar from 'components/index/note-bar'
 import NoteForm from 'components/index/note-form'
 import NotesList from 'components/index/notes-list'
-
-Modal.setAppElement('#__next')
+import Modal from 'components/shared/modal'
 
 export default function Home() {
   const router = useRouter()
@@ -25,7 +23,10 @@ export default function Home() {
       <LogoutButton />
       <NoteBar />
       <NotesList />
-      <Modal isOpen={!!noteId} onRequestClose={() => router.push('/')}>
+      <Modal
+        isOpen={!!noteId}
+        onRequestClose={() => router.push('/')}
+      >
         <NoteForm />
       </Modal>
       <style jsx>{`
