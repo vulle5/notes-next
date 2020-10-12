@@ -36,7 +36,7 @@ const NoteForm = ({ updateNote }) => {
     // send update to server and trigger a revalidation (refetch)
     mutate(swrKey, async notes => {
       const validatedNote = await notesService.addNote(newNote)
-      return [validatedNote, ...notes.slice(1)]
+      return [validatedNote, ...notes]
     }, false)
 
     if (titleRef.current && contentRef.current) {
