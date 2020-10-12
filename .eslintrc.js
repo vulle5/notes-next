@@ -35,6 +35,7 @@ module.exports = {
         varsIgnorePattern: '^_'
       }
     ],
+    'no-param-reassign': ['error', { props: false }],
     // Import
     'import/no-absolute-path': 'off',
     // React

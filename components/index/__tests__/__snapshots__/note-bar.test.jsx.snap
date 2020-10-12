@@ -2,21 +2,38 @@
 
 exports[`should render a note-bar component 1`] = `
 <div
-  class="jsx-4019227191 container"
+  class="jsx-3217824812 container"
 >
-  <div>
-    <form
-      class="jsx-3726941156 wrapper"
+  <form
+    class="jsx-398696813 wrapper"
+  >
+    <input
+      class="jsx-398696813 title-input"
+      id="note-title"
+      name="note-title"
+      placeholder="Title"
+      type="text"
+      value=""
+    />
+    <textarea
+      class="jsx-1612382694 "
+      id="note-content"
+      name="note-content"
+      placeholder="Remind me to..."
+      rows="1"
+      type="text"
+    />
+    <button
+      class="filled"
+      style="width: auto;"
+      type="submit"
     >
-      <textarea
-        class="jsx-1612382694 "
-        id="note-content"
-        name="note-content"
-        placeholder="Remind me to..."
-        rows="1"
-        type="text"
-      />
-    </form>
-  </div>
+      <div
+        class="buttonContent"
+      >
+        Add proper title
+      </div>
+    </button>
+  </form>
 </div>
 `;

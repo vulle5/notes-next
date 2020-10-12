@@ -13,4 +13,16 @@ const addNote = async note => {
   return data
 }
 
-export default { addNote }
+const updateNote = async note => {
+  const data = await fetch(`${url}/${note.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(note)
+  }).then(res => res.json())
+
+  return data
+}
+
+export default { addNote, updateNote }

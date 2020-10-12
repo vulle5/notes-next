@@ -8,10 +8,8 @@ import Note from './note'
 
 const NotesList = () => {
   const setSelectedNote = useSetRecoilState(selectedNote)
-  const { data, isLoading, isError } = useNotes()
-  const notes = Object.values(data)
+  const { data: notes, isError } = useNotes()
 
-  if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Unexpected error</div>
   if (!notes || !notes.length) return <div>No data</div>
 

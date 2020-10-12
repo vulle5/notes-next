@@ -2,11 +2,10 @@ import useSWR from 'swr'
 import { fetcher } from 'options/useSWR'
 
 const useNotes = swrOptions => {
-  const { data = {}, error, ...rest } = useSWR('/api/notes', fetcher, swrOptions)
+  const { data = [], error, ...rest } = useSWR('/api/notes', fetcher, swrOptions)
 
   return {
     data,
-    isLoading: !error && !data,
     isError: error,
     ...rest
   }
