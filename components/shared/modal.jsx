@@ -2,13 +2,15 @@ import { useEffect } from 'react'
 import ReactModal from 'react-modal'
 import PropTypes from 'prop-types'
 
-const Modal = ({ children, isOpen, onRequestClose }) => {
+const Modal = ({ children, isOpen, onRequestClose, modalStyles }) => {
+  const { modal, modalOpen } = styles(modalStyles)
+
   useEffect(() => {
     ReactModal.setAppElement('#__next')
   }, [])
 
   const onModalOpen = () => {
-    document.getElementById('__next').style = styles.modalOpen
+    document.getElementById('__next').style = modalOpen
   }
 
   const onModalClose = () => {
@@ -22,7 +24,7 @@ const Modal = ({ children, isOpen, onRequestClose }) => {
         isOpen={isOpen}
         onRequestClose={onModalClose}
         onAfterOpen={onModalOpen}
-        style={styles.modal}
+        style={modal}
       >
         {children}
       </ReactModal>
@@ -30,30 +32,40 @@ const Modal = ({ children, isOpen, onRequestClose }) => {
   )
 }
 
-const styles = {
+// Adjust top and max-width to play with modal size
+const styles = ({ overlay, content }) => ({
   modalOpen: 'filter: blur(8px); transition: filter .4s cubic-bezier(0.15, 1, 0.75, 1);',
   modal: {
     overlay: {
-      backgroundColor: 'unset'
+      backgroundColor: 'unset',
+      ...overlay
     },
     content: {
       position: 'relative',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      maxWidth: 500,
+      top: '40%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
       padding: 0,
       border: 'transparent',
       background: 'none',
-      margin: '0.5rem'
+      transform: 'translate(-50%, -50%)',
+      ...content
     }
   }
+})
+
+Modal.defaultProps = {
+  modalStyles: {}
 }
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  modalStyles: PropTypes.shape({
+    overlay: PropTypes.shape({}),
+    content: PropTypes.shape({})
+  }),
   onRequestClose: PropTypes.func
 }
 

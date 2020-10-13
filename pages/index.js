@@ -28,8 +28,9 @@ export default function Home() {
       <Modal
         isOpen={!!noteId}
         onRequestClose={() => router.push('/')}
+        modalStyles={{ content: { maxWidth: 500 } }}
       >
-        <Card containerStyles={{ padding: '1rem' }} shadow="none">
+        <Card containerStyles={{ padding: '1rem', margin: '1rem' }} shadow="none">
           <NoteForm updateNote />
         </Card>
       </Modal>
