@@ -3,10 +3,9 @@
 exports[`should not crash without data 1`] = `
 <div
   class="shadow-small"
-  style="margin: 0.5rem;"
 >
   <div
-    class="jsx-3444980649 container"
+    class="jsx-3424239808 container"
   />
 </div>
 `;
@@ -14,18 +13,17 @@ exports[`should not crash without data 1`] = `
 exports[`should render a note component 1`] = `
 <div
   class="shadow-small"
-  style="margin: 0.5rem;"
 >
   <div
-    class="jsx-3444980649 container"
+    class="jsx-3424239808 container"
   >
     <h4
-      class="jsx-3444980649 title"
+      class="jsx-3424239808 title"
     >
       note title
     </h4>
     <p
-      class="jsx-3444980649 content"
+      class="jsx-3424239808 content"
     >
       note content
     </p>

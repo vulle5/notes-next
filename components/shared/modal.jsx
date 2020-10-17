@@ -3,34 +3,42 @@ import ReactModal from 'react-modal'
 import PropTypes from 'prop-types'
 
 const Modal = ({ children, isOpen, onRequestClose, modalStyles }) => {
-  const { modal, modalOpen, modalContentOnOpen } = styles(modalStyles)
+  const { modal, modalOpen, modalContentOnOpen, modalContentOnClose } = styles(modalStyles)
 
   useEffect(() => {
     ReactModal.setAppElement('#__next')
   }, [])
 
+  const concatModalContentStyle = cssStyles => {
+    const modalContent = document.getElementById('modal-content')
+    modalContent.style = modalContent.style.cssText.concat(' ', cssStyles)
+  }
+
   const onModalOpen = () => {
     document.getElementById('__next').style = modalOpen
-    const content = document.getElementsByClassName('ReactModal__Content')
-    content[0].style = content[0].style.cssText.concat(' ', modalContentOnOpen)
+    concatModalContentStyle(modalContentOnOpen)
   }
 
   const onModalClose = () => {
     document.getElementById('__next').style.removeProperty('filter')
+    concatModalContentStyle(modalContentOnClose)
     onRequestClose && onRequestClose()
   }
 
+  /* TODO:
+    - Move modal away from index.js
+  */
   return (
-    <>
-      <ReactModal
-        isOpen={isOpen}
-        onRequestClose={onModalClose}
-        onAfterOpen={onModalOpen}
-        style={modal}
-      >
-        {children}
-      </ReactModal>
-    </>
+    <ReactModal
+      closeTimeoutMS={200}
+      id="modal-content"
+      isOpen={isOpen}
+      onRequestClose={onModalClose}
+      onAfterOpen={onModalOpen}
+      style={modal}
+    >
+      {children}
+    </ReactModal>
   )
 }
 
@@ -38,6 +46,7 @@ const Modal = ({ children, isOpen, onRequestClose, modalStyles }) => {
 const styles = ({ overlay, content }) => ({
   modalOpen: 'filter: blur(8px); transition: filter .4s cubic-bezier(0.15, 1, 0.75, 1);',
   modalContentOnOpen: 'transform: translate(-50%, -50%) scale(1); opacity: 1; transition: transform .4s cubic-bezier(0.15, 1, 0.75, 1), opacity .4s',
+  modalContentOnClose: 'transform: translate(-50%, -50%) scale(0.33); opacity: 0; transition: transform .2s cubic-bezier(0.15, 1, 0.75, 1), opacity .2s',
   modal: {
     overlay: {
       backgroundColor: 'unset',

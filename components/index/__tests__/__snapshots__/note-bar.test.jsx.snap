@@ -2,7 +2,7 @@
 
 exports[`should render a note-bar component 1`] = `
 <div
-  class="jsx-3217824812 container"
+  class="jsx-1393886092 container"
 >
   <form
     class="jsx-398696813 wrapper"
