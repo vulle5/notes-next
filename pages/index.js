@@ -21,7 +21,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="preload" href="/api/notes" as="fetch" crossOrigin="anonymous" />
       </Head>
-      <h1 className="title">Quick brown fox jumped over the fence</h1>
       <LogoutButton />
       <NoteBar />
       <NotesList />

@@ -3,10 +3,7 @@ import PropTypes from 'prop-types'
 import Card from 'components/shared/card'
 
 const Note = ({ note }) => (
-  <Card
-    containerStyles={{ margin: '0.5rem' }}
-    shadow="small"
-  >
+  <Card shadow="small">
     <div className="container">
       {note.title && <h4 className="title">{note.title}</h4>}
       {note.content && <p className="content">{note.content}</p>}
@@ -17,6 +14,7 @@ const Note = ({ note }) => (
           max-height: 400px;
           width: 250px;
           padding: 0.5rem;
+          border-radius: 8px;
         }
         .title {
           color: red;
@@ -25,6 +23,16 @@ const Note = ({ note }) => (
         }
         .content {
           color: black;
+        }
+        .container:hover {
+          background: var(--theme-hover);
+        }
+        .container:focus {
+          background: var(--theme-hover);
+        }
+        .container:not(:hover) {
+          transition: background .2s ease-out;
+          background: #fff;
         }
       `}
       </style>

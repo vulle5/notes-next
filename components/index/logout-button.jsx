@@ -20,7 +20,7 @@ const LogoutButton = () => {
   return (
     <Button
       onClick={handleOnClick}
-      style={{ position: 'absolute', top: '0.5rem', right: '1rem' }}
+      style={{ position: 'absolute', right: '1rem' }}
     >
       Logout
     </Button>

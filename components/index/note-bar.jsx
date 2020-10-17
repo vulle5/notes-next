@@ -13,6 +13,7 @@ const NoteBar = () => (
         max-width: 400px;
         border: 1px solid;
         border-radius: 0.5rem;
+        margin-top: 1rem;
       }
     `}
     </style>

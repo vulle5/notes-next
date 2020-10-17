@@ -23,6 +23,7 @@ const NotesList = () => {
         >
           <a
             aria-hidden="true"
+            className="link"
             role="link"
             onClick={() => setSelectedNote(note)}
             style={{ textDecoration: 'none' }}
@@ -35,6 +36,9 @@ const NotesList = () => {
         .container {
           display: flex;
           flex-wrap: wrap;
+        }
+        .link {
+          margin: 0.5rem;
         }
       `}
       </style>
