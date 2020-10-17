@@ -25,9 +25,6 @@ const Modal = ({ children, isOpen, onRequestClose, modalStyles }) => {
     onRequestClose && onRequestClose()
   }
 
-  /* TODO:
-    - Move modal away from index.js
-  */
   return (
     <ReactModal
       closeTimeoutMS={200}
