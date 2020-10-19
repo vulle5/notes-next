@@ -52,6 +52,7 @@
     },
     "moduleDirectories": [
       "node_modules",
+      "<rootDir>/node_modules",
       "."
     ]
   }

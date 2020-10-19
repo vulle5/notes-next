@@ -1,16 +1,9 @@
 import React from 'react'
-import { RecoilRoot } from 'recoil'
-import { render } from '@testing-library/react'
+import { render } from 'testing/testing-library-wrapper'
 
 import NoteBar from '../note-bar'
 
-let component
-
-beforeEach(() => {
-  component = <RecoilRoot><NoteBar /></RecoilRoot>
-})
-
 test('should render a note-bar component', () => {
-  const { container } = render(component)
+  const { container } = render(<NoteBar />)
   expect(container.firstChild).toMatchSnapshot()
 })

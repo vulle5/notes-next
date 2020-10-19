@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component should render correctly 1`] = `
+<div
+  class="ReactModal__Content ReactModal__Content--after-open"
+  id="modal-content"
+  role="dialog"
+  style="position: relative; top: 40%; left: 50%; border: transparent; background: none; overflow: auto; border-radius: 4px; outline: none; padding: 0px; transform: translate(-50%, -50%) scale(1); opacity: 1; transition: transform .4s cubic-bezier(0.15, 1, 0.75, 1), opacity .4s;"
+  tabindex="-1"
+>
+  <div>
+    Some content
+  </div>
+</div>
+`;

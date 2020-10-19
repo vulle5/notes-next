@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import ReactModal from 'react-modal'
 import PropTypes from 'prop-types'
 
-const Modal = ({ children, isOpen, onRequestClose, modalStyles }) => {
+const Modal = ({ children, isOpen, onRequestClose, modalStyles, ...modalProps }) => {
   const { modal, modalOpen, modalContentOnOpen, modalContentOnClose } = styles(modalStyles)
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const Modal = ({ children, isOpen, onRequestClose, modalStyles }) => {
       onRequestClose={onModalClose}
       onAfterOpen={onModalOpen}
       style={modal}
+      {...modalProps}
     >
       {children}
     </ReactModal>

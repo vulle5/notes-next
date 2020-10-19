@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<body>
+  <div
+    id="__next"
+  />
+  <div />
+  <div
+    class="ReactModalPortal"
+  />
+</body>
+`;
+
+exports[`should render modal when noteId in query 1`] = `
+<div
+  class="ReactModal__Content ReactModal__Content--after-open"
+  id="modal-content"
+  role="dialog"
+  style="position: relative; top: 40%; left: 50%; border: transparent; background: none; overflow: auto; border-radius: 4px; outline: none; padding: 0px; transform: translate(-50%, -50%) scale(1); opacity: 1; max-width: 500px; transition: transform .4s cubic-bezier(0.15, 1, 0.75, 1), opacity .4s;"
+  tabindex="-1"
+>
+  <div
+    class="shadow-none"
+    style="padding: 1rem;"
+  >
+    <form
+      class="jsx-398696813 wrapper"
+    >
+      <input
+        class="jsx-398696813 title-input"
+        id="note-title"
+        name="note-title"
+        placeholder="Title"
+        type="text"
+        value=""
+      />
+      <textarea
+        class="jsx-1612382694 "
+        id="note-content"
+        name="note-content"
+        placeholder="Remind me to..."
+        rows="1"
+        type="text"
+      />
+      <button
+        class="filled"
+        style="width: auto;"
+        type="submit"
+      >
+        <div
+          class="buttonContent"
+        >
+          Add proper title
+        </div>
+      </button>
+    </form>
+  </div>
+</div>
+`;
