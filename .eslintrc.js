@@ -28,6 +28,14 @@ module.exports = {
     'arrow-parens': ['error', 'as-needed'],
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
     'object-curly-newline': 'off',
+    'no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        varsIgnorePattern: '^_'
+      }
+    ],
+    'no-param-reassign': ['error', { props: false }],
     // Import
     'import/no-absolute-path': 'off',
     // React
@@ -37,6 +45,11 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react-hooks/exhaustive-deps': [
+      'warn', {
+        additionalHooks: 'useRecoilCallback'
+      }
+    ],
     // Jest
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',

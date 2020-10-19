@@ -1,4 +1,5 @@
 import { SWRConfig } from 'swr'
+import { RecoilRoot } from 'recoil'
 
 // Options
 import getSWROptions from 'options/useSWR'
@@ -9,9 +10,11 @@ import '../styles/global.css'
 export default function App({ Component, pageProps }) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return (
-    <SWRConfig value={getSWROptions()}>
-      <Component {...pageProps} />
-    </SWRConfig>
+    <RecoilRoot>
+      <SWRConfig value={getSWROptions()}>
+        <Component {...pageProps} />
+      </SWRConfig>
+    </RecoilRoot>
   )
 }
 
