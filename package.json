@@ -10,6 +10,9 @@
     "lint": "eslint ./**/*.{js,jsx} --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "firebase": "^7.19.0",
     "firebase-admin": "^9.0.0",
     "next": "9.5.4",

@@ -8,6 +8,7 @@ const IndexModal = () => {
   const router = useRouter()
   const { noteId } = router.query
 
+  // TODO: Make onRequestClose method that submits the form
   return (
     <Modal
       isOpen={!!noteId}

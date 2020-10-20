@@ -3,7 +3,7 @@ import ReactModal from 'react-modal'
 import PropTypes from 'prop-types'
 
 import Card from './card'
-import Button from './button'
+import Icon from './Icon'
 
 const Modal = ({
   children,
@@ -38,9 +38,19 @@ const Modal = ({
       {...modalProps}
     >
       <Card containerStyles={{ padding: '1rem' }} shadow="none">
+        <div className="close-button">
+          <Icon onClick={handleModalClose} name="times-circle" size="lg" />
+        </div>
         {children}
       </Card>
-      <Button onClick={handleModalClose}>Sulje</Button>
+      <style jsx>
+        {`
+          .close-button {
+            display: flex;
+            justify-content: flex-end;
+          }
+        `}
+      </style>
     </ReactModal>
   )
 }
