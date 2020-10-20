@@ -2,27 +2,29 @@ import { useEffect } from 'react'
 import ReactModal from 'react-modal'
 import PropTypes from 'prop-types'
 
-const Modal = ({ children, isOpen, onRequestClose, modalStyles, ...modalProps }) => {
-  const { modal, modalOpen, modalContentOnOpen, modalContentOnClose } = styles(modalStyles)
+import Card from './card'
+import Button from './button'
 
+const Modal = ({
+  children,
+  isOpen,
+  onRequestClose,
+  onAfterOpen,
+  modalStyles,
+  ...modalProps
+}) => {
   useEffect(() => {
     ReactModal.setAppElement('#__next')
   }, [])
 
-  const concatModalContentStyle = cssStyles => {
-    const modalContent = document.getElementById('modal-content')
-    modalContent.style = modalContent.style.cssText.concat(' ', cssStyles)
-  }
-
-  const onModalOpen = () => {
-    document.getElementById('__next').style = modalOpen
-    concatModalContentStyle(modalContentOnOpen)
-  }
-
-  const onModalClose = () => {
-    document.getElementById('__next').style.removeProperty('filter')
-    concatModalContentStyle(modalContentOnClose)
+  const handleModalClose = () => {
+    handleCloseModalStyles()
     onRequestClose && onRequestClose()
+  }
+
+  const handleModalOpen = () => {
+    handleOpenModalStyles()
+    onAfterOpen && onAfterOpen()
   }
 
   return (
@@ -30,21 +32,51 @@ const Modal = ({ children, isOpen, onRequestClose, modalStyles, ...modalProps })
       closeTimeoutMS={200}
       id="modal-content"
       isOpen={isOpen}
-      onRequestClose={onModalClose}
-      onAfterOpen={onModalOpen}
-      style={modal}
+      onRequestClose={handleModalClose}
+      onAfterOpen={handleModalOpen}
+      style={styles(modalStyles).modal}
       {...modalProps}
     >
-      {children}
+      <Card containerStyles={{ padding: '1rem' }} shadow="none">
+        {children}
+      </Card>
+      <Button onClick={handleModalClose}>Sulje</Button>
     </ReactModal>
   )
 }
 
+Modal.defaultProps = {
+  modalStyles: {}
+}
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  modalStyles: PropTypes.shape({
+    overlay: PropTypes.shape({}),
+    content: PropTypes.shape({})
+  }),
+  onAfterOpen: PropTypes.func,
+  onRequestClose: PropTypes.func
+}
+
+const concatModalContentStyle = cssStyles => {
+  const modalContent = document.getElementById('modal-content')
+  modalContent.style = modalContent.style.cssText.concat(' ', cssStyles)
+}
+
+const handleCloseModalStyles = () => {
+  document.getElementById('__next').style.removeProperty('filter')
+  concatModalContentStyle(modalTransitionStyles.modalContentOnClose)
+}
+
+const handleOpenModalStyles = () => {
+  document.getElementById('__next').style = modalTransitionStyles.modalOpen
+  concatModalContentStyle(modalTransitionStyles.modalContentOnOpen)
+}
+
 // Adjust top and max-width to play with modal size
 const styles = ({ overlay, content }) => ({
-  modalOpen: 'filter: blur(8px); transition: filter .4s cubic-bezier(0.15, 1, 0.75, 1);',
-  modalContentOnOpen: 'transform: translate(-50%, -50%) scale(1); opacity: 1; transition: transform .4s cubic-bezier(0.15, 1, 0.75, 1), opacity .4s',
-  modalContentOnClose: 'transform: translate(-50%, -50%) scale(0.33); opacity: 0; transition: transform .2s cubic-bezier(0.15, 1, 0.75, 1), opacity .2s',
   modal: {
     overlay: {
       backgroundColor: 'unset',
@@ -66,18 +98,13 @@ const styles = ({ overlay, content }) => ({
   }
 })
 
-Modal.defaultProps = {
-  modalStyles: {}
-}
-
-Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  modalStyles: PropTypes.shape({
-    overlay: PropTypes.shape({}),
-    content: PropTypes.shape({})
-  }),
-  onRequestClose: PropTypes.func
+const modalTransitionStyles = {
+  modalOpen:
+    'filter: blur(8px); transition: filter .4s cubic-bezier(0.15, 1, 0.75, 1);',
+  modalContentOnOpen:
+    'transform: translate(-50%, -50%) scale(1); opacity: 1; transition: transform .4s cubic-bezier(0.15, 1, 0.75, 1), opacity .4s',
+  modalContentOnClose:
+    'transform: translate(-50%, -50%) scale(0.33); opacity: 0; transition: transform .2s cubic-bezier(0.15, 1, 0.75, 1), opacity .2s'
 }
 
 export default Modal

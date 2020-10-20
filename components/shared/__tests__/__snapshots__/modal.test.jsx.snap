@@ -8,8 +8,24 @@ exports[`Modal component should render correctly 1`] = `
   style="position: relative; top: 40%; left: 50%; border: transparent; background: none; overflow: auto; border-radius: 4px; outline: none; padding: 0px; transform: translate(-50%, -50%) scale(1); opacity: 1; transition: transform .4s cubic-bezier(0.15, 1, 0.75, 1), opacity .4s;"
   tabindex="-1"
 >
-  <div>
-    Some content
+  <div
+    class="shadow-none"
+    style="padding: 1rem;"
+  >
+    <div>
+      Some content
+    </div>
   </div>
+  <button
+    class="filled"
+    style="width: auto;"
+    type="button"
+  >
+    <div
+      class="buttonContent"
+    >
+      Sulje
+    </div>
+  </button>
 </div>
 `;

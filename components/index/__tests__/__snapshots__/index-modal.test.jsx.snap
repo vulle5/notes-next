@@ -56,5 +56,16 @@ exports[`should render modal when noteId in query 1`] = `
       </button>
     </form>
   </div>
+  <button
+    class="filled"
+    style="width: auto;"
+    type="button"
+  >
+    <div
+      class="buttonContent"
+    >
+      Sulje
+    </div>
+  </button>
 </div>
 `;
