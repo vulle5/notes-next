@@ -8,15 +8,22 @@ import notesService from 'services/api/notes'
 import Button from 'components/shared/button'
 import ResizableTextarea from 'components/shared/resizable-textarea'
 
-const NoteForm = ({ updateNote }) => {
+const NoteForm = ({ updateNote, formRef }) => {
   const swrKey = '/api/notes'
   const note = useRecoilValue(selectedNote)
   const titleRef = useRef(null)
   const contentRef = useRef(null)
 
+  const onInputKeyPress = event => {
+    if (event.which === 13 && updateNote) {
+      event.preventDefault()
+      contentRef?.current?.focus()
+    }
+  }
+
   // Allow new lines with shift + enter
-  const onTextAreaKeyPress = event => {
-    if (event.which === 13 && !event.shiftKey) {
+  const onTextareaKeyPress = event => {
+    if (event.which === 13 && !event.shiftKey && !updateNote) {
       event.target.form.dispatchEvent(new Event('submit', { cancelable: true }))
       // Prevent actual keystroke from being registered
       event.preventDefault()
@@ -63,12 +70,17 @@ const NoteForm = ({ updateNote }) => {
   }
 
   return (
-    <form className="wrapper" onSubmit={e => (updateNote ? onUpdate(e) : onCreate(e))}>
+    <form
+      className="wrapper"
+      onSubmit={e => (updateNote ? onUpdate(e) : onCreate(e))}
+      ref={formRef}
+    >
       <input
         className="title-input"
         defaultValue={updateNote ? note.title : ''}
         id="note-title"
         name="note-title"
+        onKeyPress={e => onInputKeyPress(e)}
         placeholder="Title"
         ref={titleRef}
         type="text"
@@ -79,12 +91,12 @@ const NoteForm = ({ updateNote }) => {
         name="note-content"
         maxRows={5}
         minRows={1}
-        onKeyPress={e => onTextAreaKeyPress(e)}
+        onKeyPress={e => onTextareaKeyPress(e)}
         placeholder="Remind me to..."
         textareaRef={contentRef}
         type="text"
       />
-      <Button type="submit">Add proper title</Button>
+      {!updateNote && <Button type="submit">Add proper title</Button>}
       <style jsx>{`
         .wrapper {
           display: flex;
@@ -106,6 +118,7 @@ const NoteForm = ({ updateNote }) => {
 }
 
 NoteForm.propTypes = {
+  formRef: PropTypes.shape({}),
   updateNote: PropTypes.bool
 }
 

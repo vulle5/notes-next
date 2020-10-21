@@ -62,17 +62,6 @@ exports[`should render modal when noteId in query 1`] = `
         rows="1"
         type="text"
       />
-      <button
-        class="filled"
-        style="width: auto;"
-        type="submit"
-      >
-        <div
-          class="buttonContent"
-        >
-          Add proper title
-        </div>
-      </button>
     </form>
   </div>
 </div>
