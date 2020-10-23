@@ -9,7 +9,6 @@ const IndexModal = () => {
   const router = useRouter()
   const { noteId } = router.query
 
-  // TODO: Only submit if note actually changed
   const onRequestClose = () => {
     if (formRef.current) {
       formRef.current?.requestSubmit()

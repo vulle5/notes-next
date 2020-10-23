@@ -33,6 +33,13 @@ const NoteForm = ({ updateNote, formRef }) => {
   const onCreate = event => {
     event.preventDefault()
 
+    if (
+      titleRef.current.value.match(/^ *$/)
+      && contentRef.current.value.match(/^ *$/)
+    ) {
+      return
+    }
+
     const newNote = {
       id: Date.now().toString(),
       title: titleRef.current?.value,
@@ -54,6 +61,13 @@ const NoteForm = ({ updateNote, formRef }) => {
 
   const onUpdate = event => {
     event.preventDefault()
+
+    if (
+      titleRef.current.value === note.title
+      && contentRef.current.value === note.content
+    ) {
+      return
+    }
 
     const updatedNote = {
       id: note.id,
