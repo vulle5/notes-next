@@ -1,4 +1,4 @@
-import Fetch from 'services/fetch'
+import fetcher from 'services/fetch'
 
 export default async (req, res) => {
   const { method } = req
@@ -20,7 +20,7 @@ const getAccessToken = async (req, res) => {
   const options = { headers: { Accept: 'application/json' }, method: 'POST', body }
 
   try {
-    const response = await new Fetch(url, options).json()
+    const response = await fetcher(url, options).then(test => test.json())
     res.status(200).json(response)
   } catch (err) {
     res.status(400).json(err)

@@ -1,5 +1,5 @@
 import firebase from 'services/firebase-client'
-import Fetch from 'services/fetch'
+import fetcher from 'services/fetch'
 
 // TODO: Reference /api/auth
 const url = 'http://localhost:3000/api/auth'
@@ -25,7 +25,7 @@ const login = async (type, options) => {
 
   if (idToken) {
     try {
-      await Fetch.exec(`${url}/login`, { method: 'POST', body: { idToken } })
+      await fetcher(`${url}/login`, { method: 'POST', body: { idToken } })
     } catch (error) {
       throw new Error('Login failed unexpectedly')
     }
@@ -33,7 +33,7 @@ const login = async (type, options) => {
 }
 
 const logout = async () => {
-  Fetch.exec(`${url}/logout`, { method: 'POST' })
+  fetcher(`${url}/logout`, { method: 'POST' })
 }
 
 const handleEmailAndPassword = async ({ email, password }) => {
@@ -56,7 +56,8 @@ const handleGithub = async ({ clientId, code }) => {
   // Get auth token for github with temp code given by Github callback
   const githubAuthUrl = 'http://localhost:3000/api/auth/github'
   const options = { method: 'POST', body: { clientId, code } }
-  const { access_token: githubIdToken } = await new Fetch(githubAuthUrl, options).json()
+  const { access_token: githubIdToken } = await fetcher(githubAuthUrl, options)
+    .then(res => res.json())
   // Create firebase credentials with github id token
   const credential = firebase.auth.GithubAuthProvider.credential(githubIdToken)
   // Try to login to user

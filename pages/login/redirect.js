@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 const Redirect = () => {
   useEffect(() => {
@@ -12,11 +12,7 @@ const Redirect = () => {
     return () => channel.close()
   }, [])
 
-  return (
-    <div>
-      This should post a message
-    </div>
-  )
+  return null
 }
 
 export default Redirect
