@@ -42,6 +42,9 @@ exports[`should render a register form 1`] = `
         type="email"
         value=""
       />
+      <div
+        class="bottomBorder"
+      />
     </div>
   </section>
   <section
@@ -64,6 +67,9 @@ exports[`should render a register form 1`] = `
         type="password"
         value=""
       />
+      <div
+        class="bottomBorder"
+      />
     </div>
   </section>
   <section
@@ -85,6 +91,9 @@ exports[`should render a register form 1`] = `
         name="passAgain"
         type="password"
         value=""
+      />
+      <div
+        class="bottomBorder"
       />
     </div>
   </section>
