@@ -46,8 +46,6 @@ const LoginForm = () => {
           type="email"
           value={email}
         />
-      </section>
-      <section>
         <Input
           autoComplete="password"
           id="pass"

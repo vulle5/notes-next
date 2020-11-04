@@ -7,4 +7,5 @@
   --theme-on-background: #000;
   --theme-gray: #dcdcdc;
   --theme-hover: #f6f6f6;
+  --theme-bezier: cubic-bezier(0.15, 1, 0.75, 1);
 }

@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -11,15 +12,28 @@
   align-items: unset;
 }
 
+.bottomBorder {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  border-bottom: 2px solid var(--theme-primary);
+  transition: width .2s var(--theme-bezier);
+}
+
+.inputText:focus:enabled + .bottomBorder {
+  width: 100%;
+}
+
 .inputText {
   all: unset;
   height: 28px;
   border-bottom: 2px solid rgb(220, 220, 220);
-  transition: border-bottom-color .2s ease-out;
 }
 
-.inputText:focus:enabled {
-  border-bottom: 2px solid var(--theme-primary);
+.inputText[type="password"] {
+  letter-spacing: 1px;
 }
 
 .inputLabel {
@@ -27,8 +41,4 @@
   font-size: 0.8rem;
   color: rgb(80, 80, 80);
   padding-bottom: 4px;
-}
-
-.inputText[type="password"] {
-  letter-spacing: 1px;
 }

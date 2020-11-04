@@ -21,9 +21,8 @@ const Design = () => (
     <Button>Kirjaudu sisään</Button>
     <h4 className="primary-text">Quick brown fox jumped over the fence</h4>
     <h4 className="secondary-text">Quick brown fox jumped over the fence</h4>
-    <h4 className="ternary-text">Quick brown fox jumped over the fence</h4>
     <br />
-    <Card containerStyles={{ display: 'inline-flex' }}><h4>Some text inside a card</h4></Card>
+    <Card containerStyles={{ display: 'inline-flex', padding: 16 }}><h4>Some text inside a card</h4></Card>
   </Container>
 )
 

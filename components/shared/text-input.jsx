@@ -7,6 +7,7 @@ const TextInput = ({ type, id, name, stretch, label, ...inputProps }) => (
   <div className={stretch ? styles.containerStretch : styles.container}>
     {label && <label className={styles.inputLabel} htmlFor={id}>{label}</label>}
     <input id={id} name={name} className={styles.inputText} type={type} {...inputProps} />
+    <div className={styles.bottomBorder} />
   </div>
 )
 
