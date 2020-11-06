@@ -40,7 +40,7 @@ module.exports = {
     // Import
     'import/no-absolute-path': 'off',
     'import/prefer-default-export': 'off',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', 'testing/*'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.test.jsx', 'testing/*'] }],
     // React
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'error',
