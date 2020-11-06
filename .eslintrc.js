@@ -36,8 +36,11 @@ module.exports = {
       }
     ],
     'no-param-reassign': ['error', { props: false }],
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     // Import
     'import/no-absolute-path': 'off',
+    'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', 'testing/*'] }],
     // React
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'error',

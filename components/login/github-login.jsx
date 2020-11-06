@@ -23,8 +23,7 @@ const GithubLogin = ({ clientId }) => {
   }, [clientId, router])
 
   const authorize = () => {
-    // eslint-disable-next-line no-restricted-globals
-    const { width, height } = screen
+    const { width, height } = window.screen
     const scope = 'user'
     const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=${scope}`
     const target = 'mysite'

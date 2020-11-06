@@ -5,11 +5,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const InlineScript = ({ children }) => (
-  <script dangerouslySetInnerHTML={{ __html: `(${children.toString()})();` }} /> // eslint-disable-line
+  // eslint-disable-next-line react/no-danger
+  <script dangerouslySetInnerHTML={{ __html: `(${children.toString()})();` }} />
 )
 
 InlineScript.propTypes = {
-  children: PropTypes.any.isRequired, // eslint-disable-line
+  children: PropTypes.node.isRequired
 }
 
 export default InlineScript

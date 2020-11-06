@@ -18,5 +18,4 @@ const verifyToken = async req => {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export { verifyToken }

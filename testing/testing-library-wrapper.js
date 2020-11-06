@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { render } from '@testing-library/react'
@@ -18,5 +17,4 @@ WithProviders.propTypes = {
 
 // re-export everything
 export * from '@testing-library/react'
-
 export { customRender as render }
