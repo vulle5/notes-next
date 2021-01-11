@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 
-import authService from 'services/api/auth'
-import userService from 'services/api/user'
+import authService from 'app/services/api/auth'
+import userService from 'app/services/api/user'
 import RegisterForm from '../register-form'
 
 jest.mock('services/api/user')

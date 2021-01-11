@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 
-import authService from 'services/api/auth'
-import Button from 'components/shared/button'
+import authService from 'app/services/api/auth'
+import Button from 'app/components/shared/button'
 
 const GithubLogin = ({ clientId }) => {
   const router = useRouter()

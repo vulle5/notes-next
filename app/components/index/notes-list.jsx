@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { useSetRecoilState } from 'recoil'
 
-import { selectedNote } from 'recoil/note'
-import useNotes from 'hooks/useNotes'
+import { selectedNote } from 'app/recoil/note'
+import useNotes from 'app/hooks/useNotes'
 import Note from './note'
 
 const NotesList = () => {

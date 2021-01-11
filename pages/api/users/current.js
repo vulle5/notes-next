@@ -1,4 +1,4 @@
-import { verifyToken } from 'helpers/api/auth'
+import { verifyToken } from 'app/helpers/api/auth'
 
 export default async (req, res) => {
   try {

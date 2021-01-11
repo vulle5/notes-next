@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 
-import authService from 'services/api/auth'
-import userService from 'services/api/user'
-import Button from 'components/shared/button'
-import Input from 'components/shared/text-input'
+import authService from 'app/services/api/auth'
+import userService from 'app/services/api/user'
+import Button from 'app/components/shared/button'
+import Input from 'app/components/shared/text-input'
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('')

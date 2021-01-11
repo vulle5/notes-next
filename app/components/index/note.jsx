@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Card from 'components/shared/card'
+import Card from 'app/components/shared/card'
 
 const Note = ({ note }) => (
   <Card shadow="small">

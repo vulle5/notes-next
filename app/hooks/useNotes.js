@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { fetcher } from 'options/useSWR'
+import { fetcher } from 'app/options/useSWR'
 
 const useNotes = swrOptions => {
   const { data = [], error, ...rest } = useSWR('/api/notes', fetcher, swrOptions)

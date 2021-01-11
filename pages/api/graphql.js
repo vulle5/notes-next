@@ -1,5 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server-micro'
-import { db } from 'services/firebase'
+import { db } from 'app/services/firebase'
 
 const typeDefs = gql`
   type Note {

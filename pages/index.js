@@ -1,10 +1,10 @@
 import Head from 'next/head'
 
-import Container from 'components/shared/container'
-import LogoutButton from 'components/index/logout-button'
-import NoteBar from 'components/index/note-bar'
-import NotesList from 'components/index/notes-list'
-import IndexModal from 'components/index/index-modal'
+import Container from 'app/components/shared/container'
+import LogoutButton from 'app/components/index/logout-button'
+import NoteBar from 'app/components/index/note-bar'
+import NotesList from 'app/components/index/notes-list'
+import IndexModal from 'app/components/index/index-modal'
 
 export default function Home() {
   return (

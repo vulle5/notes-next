@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { useRecoilValue } from 'recoil'
 import { mutate } from 'swr'
 
-import { selectedNote } from 'recoil/note'
-import notesService from 'services/api/notes'
-import Button from 'components/shared/button'
-import ResizableTextarea from 'components/shared/resizable-textarea'
+import { selectedNote } from 'app/recoil/note'
+import notesService from 'app/services/api/notes'
+import Button from 'app/components/shared/button'
+import ResizableTextarea from 'app/components/shared/resizable-textarea'
 
 const NoteForm = ({ updateNote, formRef }) => {
   const swrKey = '/api/notes'

@@ -2,9 +2,9 @@ import { SWRConfig } from 'swr'
 import { RecoilRoot } from 'recoil'
 
 // Options
-import getSWROptions from 'options/useSWR'
+import getSWROptions from 'app/options/useSWR'
 
-import '../styles/global.css'
+import 'app/styles/global.css'
 
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {

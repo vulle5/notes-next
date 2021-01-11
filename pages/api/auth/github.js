@@ -1,4 +1,4 @@
-import fetcher from 'services/fetch'
+import fetcher from 'app/services/fetch'
 
 export default async (req, res) => {
   const { method } = req

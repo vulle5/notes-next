@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 
-import authService from 'services/api/auth'
-import loadScript from 'helpers/loadScript'
-import removeScript from 'helpers/removeScript'
-import Button from 'components/shared/button'
+import authService from 'app/services/api/auth'
+import loadScript from 'app/helpers/loadScript'
+import removeScript from 'app/helpers/removeScript'
+import Button from 'app/components/shared/button'
 
 const src = 'https://apis.google.com/js/client:platform.js'
 

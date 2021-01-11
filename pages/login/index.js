@@ -4,13 +4,13 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import useMediaQuery from 'hooks/useMediaQuery'
-import GoogleLogin from 'components/login/google-login'
-import GithubLogin from 'components/login/github-login'
-import LoginForm from 'components/login/login-form'
-import RegisterForm from 'components/login/register-form'
-import Container from 'components/shared/container'
-import Card from 'components/shared/card'
+import useMediaQuery from 'app/hooks/useMediaQuery'
+import GoogleLogin from 'app/components/login/google-login'
+import GithubLogin from 'app/components/login/github-login'
+import LoginForm from 'app/components/login/login-form'
+import RegisterForm from 'app/components/login/register-form'
+import Container from 'app/components/shared/container'
+import Card from 'app/components/shared/card'
 
 export async function getStaticProps() {
   return {

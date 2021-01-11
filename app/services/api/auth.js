@@ -1,5 +1,5 @@
-import firebase from 'services/firebase-client'
-import fetcher from 'services/fetch'
+import firebase from 'app/services/firebase-client'
+import fetcher from 'app/services/fetch'
 
 // TODO: Reference /api/auth
 const url = 'http://localhost:3000/api/auth'

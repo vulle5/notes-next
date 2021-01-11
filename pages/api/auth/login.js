@@ -1,4 +1,4 @@
-import { auth } from 'services/firebase'
+import { auth } from 'app/services/firebase'
 
 export default async (req, res) => {
   const { method } = req

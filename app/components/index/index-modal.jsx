@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { useRouter } from 'next/router'
 
-import NoteForm from 'components/index/note-form'
-import Modal from 'components/shared/modal'
+import NoteForm from 'app/components/index/note-form'
+import Modal from 'app/components/shared/modal'
 
 const IndexModal = () => {
   const formRef = useRef(null)

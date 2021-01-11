@@ -1,10 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 
-import Button from 'components/shared/button'
-import TextInput from 'components/shared/text-input'
-import Container from 'components/shared/container'
-import Card from 'components/shared/card'
+import Button from 'app/components/shared/button'
+import TextInput from 'app/components/shared/text-input'
+import Container from 'app/components/shared/container'
+import Card from 'app/components/shared/card'
 
 const Design = () => (
   <Container>

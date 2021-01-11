@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-import Container from 'components/shared/container'
+import Container from 'app/components/shared/container'
 
 const Note = () => {
   const router = useRouter()

@@ -1,4 +1,4 @@
-import fetcher from 'services/fetch'
+import fetcher from 'app/services/fetch'
 
 // TODO: Reference /api/users
 const url = 'http://localhost:3000/api/users'

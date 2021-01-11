@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import authService from 'services/api/auth'
-import Button from 'components/shared/button'
-import Input from 'components/shared/text-input'
+import authService from 'app/services/api/auth'
+import Button from 'app/components/shared/button'
+import Input from 'app/components/shared/text-input'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')

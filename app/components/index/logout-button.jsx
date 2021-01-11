@@ -2,8 +2,8 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { cache, mutate } from 'swr'
 
-import authService from 'services/api/auth'
-import Button from 'components/shared/button'
+import authService from 'app/services/api/auth'
+import Button from 'app/components/shared/button'
 
 const LogoutButton = () => {
   const router = useRouter()

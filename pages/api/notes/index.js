@@ -1,7 +1,7 @@
 import { firestore } from 'firebase-admin'
-import { db } from 'services/firebase'
+import { db } from 'app/services/firebase'
 
-import { verifyToken } from 'helpers/api/auth'
+import { verifyToken } from 'app/helpers/api/auth'
 
 export default async (req, res) => {
   try {
